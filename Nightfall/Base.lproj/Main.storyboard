@@ -785,6 +785,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2nB-2y-rmA" secondAttribute="trailing" constant="20" symbolic="YES" id="07P-ki-EIb"/>
                             <constraint firstAttribute="trailing" secondItem="JGt-O8-hfH" secondAttribute="trailing" constant="20" symbolic="YES" id="2MI-dZ-m8F"/>
+                            <constraint firstItem="p1F-Ks-ff1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UDf-lM-w8f" secondAttribute="leading" constant="20" symbolic="YES" id="2ek-iH-52M"/>
                             <constraint firstItem="p1F-Ks-ff1" firstAttribute="trailing" secondItem="JGt-O8-hfH" secondAttribute="trailing" id="FeQ-HO-AQf"/>
                             <constraint firstItem="EdV-iL-Tl5" firstAttribute="top" secondItem="UDf-lM-w8f" secondAttribute="top" constant="10" id="J0O-sf-NRN"/>
                             <constraint firstItem="BxX-wo-pJ7" firstAttribute="leading" secondItem="EdV-iL-Tl5" secondAttribute="trailing" constant="20" id="V9p-Lv-dvp"/>
