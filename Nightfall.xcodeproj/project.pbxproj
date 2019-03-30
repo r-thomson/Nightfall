@@ -112,6 +112,7 @@
 				TargetAttributes = {
 					AF52250D219BA23600A2A467 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -310,7 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -332,7 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
