@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	lazy var aboutWindow: NSWindowController? = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "aboutWindowController") as? NSWindowController
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
+		
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
 			"UseFade" : true,
@@ -27,23 +28,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			])
 		
 		// Make the context menu
-		menubarContextMenu.addItem(NSMenuItem(title: "Toggle Dark Mode", action: #selector(handleTogglePress), keyEquivalent: ""))
-		menubarContextMenu.addItem(NSMenuItem(title: "Preferences...", action: #selector(handlePreferencesPress), keyEquivalent: ","))
+		menubarContextMenu.addItem(withTitle: "Toggle Dark Mode", action: #selector(handleTogglePress), keyEquivalent: "")
+		menubarContextMenu.addItem(withTitle: "Preferences...", action: #selector(handlePreferencesPress), keyEquivalent: ",")
 		menubarContextMenu.addItem(NSMenuItem.separator())
-		menubarContextMenu.addItem(NSMenuItem(title: "About Nightfall", action: #selector(handleAboutPress), keyEquivalent: ""))
-		menubarContextMenu.addItem(NSMenuItem(title: "Quit Nightfall", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+		menubarContextMenu.addItem(withTitle: "About Nightfall", action: #selector(handleAboutPress), keyEquivalent: "")
+		menubarContextMenu.addItem(withTitle: "Quit Nightfall", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
 		
 		// Configure the menubar button
-		let menubarButton = menubarItem.button
-		menubarButton?.image = NSImage(named: "MenubarIcon")
-		menubarButton?.toolTip = "Click to toggle dark mode\nRight click for more options"
-		menubarButton?.sendAction(on: [.leftMouseUp, .rightMouseUp])
-		menubarButton?.action = #selector(handleMenubarPress)
+		if let menubarButton = menubarItem.button {
+			menubarButton.image = NSImage(named: "MenubarIcon")
+			menubarButton.toolTip = "Click to toggle dark mode\nRight click for more options"
+			menubarButton.sendAction(on: [.leftMouseUp, .rightMouseUp])
+			menubarButton.action = #selector(handleMenubarPress)
+		}
 		
+		// Configure the preferences popover
 		preferencesPopover.behavior = .transient
 		preferencesPopover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "preferencesViewController") as? PreferencesViewController
 	}
 	
+	/// Handler function for whenever the menu bar button is clicked on
 	@objc func handleMenubarPress(sender: NSStatusBarButton) {
 		guard let event = NSApp.currentEvent else { return }
 		
@@ -56,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
-	// MARK: Dropdown menu item handlers
+	// MARK: - Context menu item handlers
 	
 	@objc func handleTogglePress() {
 		if UserDefaults.standard.bool(forKey: "UseFade") {
@@ -71,7 +75,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			if let button = menubarItem.button {
 				NSApplication.shared.activate(ignoringOtherApps: true)
 				preferencesPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-				
 			}
 		}
 	}
