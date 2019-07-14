@@ -683,7 +683,7 @@
         <!--Window Controller-->
         <scene sceneID="NJB-lk-VHR">
             <objects>
-                <windowController storyboardIdentifier="aboutWindowController" id="Fud-WB-9KM" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="aboutWindowController" showSeguePresentationStyle="single" id="Fud-WB-9KM" sceneMemberID="viewController">
                     <window key="window" title="About Nightfall" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="wqO-am-HzE">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" transient="YES"/>
@@ -701,10 +701,172 @@
             </objects>
             <point key="canvasLocation" x="75" y="283"/>
         </scene>
-        <!--About View Controller-->
+        <!--Preferences-->
+        <scene sceneID="koI-ra-I57">
+            <objects>
+                <viewController title="Preferences" storyboardIdentifier="preferencesViewController" showSeguePresentationStyle="single" id="THy-8m-bJv" customClass="PreferencesViewController" customModule="Nightfall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9ED-Zo-rSX">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="foC-ck-Ug2" userLabel="Fade Checkbox">
+                                <rect key="frame" x="18" y="84" width="227" height="18"/>
+                                <buttonCell key="cell" type="check" title="Fade smoothly to/from dark mode" bezelStyle="regularSquare" imagePosition="left" lineBreakMode="truncatingTail" state="on" inset="2" id="03A-ko-oe0">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="2fS-5z-byH" name="value" keyPath="values.UseFade" id="19L-oX-hOU">
+                                        <dictionary key="options">
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fng-O0-rk4" userLabel="Delay Label">
+                                <rect key="frame" x="38" y="60" width="37" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Delay:" id="PL1-XC-y7l">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gif-0w-uU8" userLabel="Delay Text Field">
+                                <rect key="frame" x="97" y="57" width="96" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="dql-ea-5Ga"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Kuc-i2-hm9">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="AOq-uO-wtg">
+                                        <real key="minimum" value="0.0"/>
+                                        <real key="maximum" value="5"/>
+                                    </numberFormatter>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="2fS-5z-byH" name="value" keyPath="values.FadeDelay" id="Os0-Dd-WZh">
+                                        <dictionary key="options">
+                                            <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="2fS-5z-byH" name="enabled" keyPath="values.UseFade" id="SEL-9j-knf"/>
+                                </connections>
+                            </textField>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oVZ-iK-evO" userLabel="Delay Stepper">
+                                <rect key="frame" x="193" y="55" width="15" height="22"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" increment="0.10000000000000001" maxValue="5" id="9Cd-fR-aOV"/>
+                                <connections>
+                                    <binding destination="2fS-5z-byH" name="value" keyPath="values.FadeDelay" id="hJn-8h-2l5">
+                                        <dictionary key="options">
+                                            <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="2fS-5z-byH" name="enabled" keyPath="values.UseFade" id="IOm-aK-yVz"/>
+                                </connections>
+                            </stepper>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-zy-0fl">
+                                <rect key="frame" x="209" y="60" width="49" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="seconds" id="pBf-1b-oWf">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yEw-Qt-R0l" userLabel="Duration Label">
+                                <rect key="frame" x="38" y="37" width="53" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Duration:" id="A9b-Qa-dIZ">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Gk-8q-6mz" userLabel="Duration Text Field">
+                                <rect key="frame" x="97" y="34" width="96" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="Tg7-Zu-dfW"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="v28-Wr-JnO">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="j8L-Fm-Gfw">
+                                        <real key="minimum" value="0.10000000000000001"/>
+                                        <real key="maximum" value="5"/>
+                                    </numberFormatter>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="2fS-5z-byH" name="value" keyPath="values.FadeDuration" id="2F6-Ay-lSD">
+                                        <dictionary key="options">
+                                            <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="2fS-5z-byH" name="enabled" keyPath="values.UseFade" id="6L7-VO-M8W"/>
+                                </connections>
+                            </textField>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0RQ-gK-3ys" userLabel="Duration Stepper">
+                                <rect key="frame" x="193" y="32" width="15" height="22"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" increment="0.10000000000000001" minValue="0.10000000000000001" maxValue="5" doubleValue="1" id="JpN-eU-vv1"/>
+                                <connections>
+                                    <binding destination="2fS-5z-byH" name="value" keyPath="values.FadeDuration" id="DGd-ga-sFW">
+                                        <dictionary key="options">
+                                            <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="2fS-5z-byH" name="enabled" keyPath="values.UseFade" id="vw3-wk-RM7"/>
+                                </connections>
+                            </stepper>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i8P-ZK-Vlk">
+                                <rect key="frame" x="209" y="37" width="49" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="seconds" id="H3U-pE-wYl">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4Gk-8q-6mz" secondAttribute="trailing" constant="20" id="1f7-qQ-SK0"/>
+                            <constraint firstItem="fng-O0-rk4" firstAttribute="leading" secondItem="foC-ck-Ug2" secondAttribute="leading" constant="20" id="1vv-hR-Lkw"/>
+                            <constraint firstItem="gif-0w-uU8" firstAttribute="top" secondItem="foC-ck-Ug2" secondAttribute="bottom" constant="10" id="3co-61-gc4"/>
+                            <constraint firstItem="4Gk-8q-6mz" firstAttribute="top" secondItem="gif-0w-uU8" secondAttribute="bottom" constant="4" id="5uS-Ip-zYG"/>
+                            <constraint firstItem="oVZ-iK-evO" firstAttribute="centerY" secondItem="gif-0w-uU8" secondAttribute="centerY" id="J27-D2-nEq"/>
+                            <constraint firstItem="gif-0w-uU8" firstAttribute="firstBaseline" secondItem="fng-O0-rk4" secondAttribute="firstBaseline" id="JIW-p6-Lyl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="i8P-ZK-Vlk" secondAttribute="trailing" constant="20" id="KSE-ex-5GM"/>
+                            <constraint firstItem="i8P-ZK-Vlk" firstAttribute="firstBaseline" secondItem="4Gk-8q-6mz" secondAttribute="firstBaseline" id="LlV-ng-Rey"/>
+                            <constraint firstItem="4Gk-8q-6mz" firstAttribute="firstBaseline" secondItem="yEw-Qt-R0l" secondAttribute="firstBaseline" id="OCc-IK-44n"/>
+                            <constraint firstItem="foC-ck-Ug2" firstAttribute="leading" secondItem="9ED-Zo-rSX" secondAttribute="leading" constant="20" symbolic="YES" id="PyK-Pc-cap"/>
+                            <constraint firstItem="4Gk-8q-6mz" firstAttribute="leading" secondItem="yEw-Qt-R0l" secondAttribute="trailing" constant="8" id="UBB-oq-TKU"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gif-0w-uU8" secondAttribute="trailing" constant="20" id="Ycs-yq-GVi"/>
+                            <constraint firstItem="yWi-zy-0fl" firstAttribute="leading" secondItem="oVZ-iK-evO" secondAttribute="trailing" constant="5" id="YxI-wS-sc5"/>
+                            <constraint firstItem="0RQ-gK-3ys" firstAttribute="centerY" secondItem="4Gk-8q-6mz" secondAttribute="centerY" id="dHt-4j-wp2"/>
+                            <constraint firstItem="foC-ck-Ug2" firstAttribute="top" secondItem="9ED-Zo-rSX" secondAttribute="top" constant="20" symbolic="YES" id="fWt-xr-0oH"/>
+                            <constraint firstItem="yEw-Qt-R0l" firstAttribute="leading" secondItem="fng-O0-rk4" secondAttribute="leading" id="goS-ti-JPO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yWi-zy-0fl" secondAttribute="trailing" constant="20" id="hZj-QI-EvW"/>
+                            <constraint firstItem="oVZ-iK-evO" firstAttribute="leading" secondItem="gif-0w-uU8" secondAttribute="trailing" constant="2" id="iWK-y5-Y4a"/>
+                            <constraint firstItem="gif-0w-uU8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fng-O0-rk4" secondAttribute="trailing" constant="8" id="lan-gw-FmM"/>
+                            <constraint firstItem="i8P-ZK-Vlk" firstAttribute="leading" secondItem="0RQ-gK-3ys" secondAttribute="trailing" constant="5" id="mSU-fw-S34"/>
+                            <constraint firstItem="yWi-zy-0fl" firstAttribute="firstBaseline" secondItem="gif-0w-uU8" secondAttribute="firstBaseline" id="pRs-yb-TnO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="foC-ck-Ug2" secondAttribute="trailing" constant="20" symbolic="YES" id="pqG-Ar-E9F"/>
+                            <constraint firstItem="0RQ-gK-3ys" firstAttribute="leading" secondItem="4Gk-8q-6mz" secondAttribute="trailing" constant="2" id="tkd-uj-IFu"/>
+                            <constraint firstItem="4Gk-8q-6mz" firstAttribute="leading" secondItem="gif-0w-uU8" secondAttribute="leading" id="z3f-sS-aPS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Ddv-AJ-Yig" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="2fS-5z-byH"/>
+            </objects>
+            <point key="canvasLocation" x="504" y="648"/>
+        </scene>
+        <!--About-->
         <scene sceneID="Hue-I9-6lf">
             <objects>
-                <viewController title="About View Controller" id="5f7-fI-jbe" customClass="AboutViewController" customModule="Nightfall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="5f7-fI-jbe" customClass="AboutViewController" customModule="Nightfall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="UDf-lM-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="180"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */; };
 		AF4333E4219C597500CB6625 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* DarkModeManager.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
@@ -14,9 +15,11 @@
 		AF99EF77219BCE08004A252B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF99EF79219BCE08004A252B /* Main.storyboard */; };
 		AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9211821AC2F7F009B740A /* AboutViewController.swift */; };
 		AFA9211D21AC416E009B740A /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AFA9211C21AC416E009B740A /* About.rtf */; };
+		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		AF4333E3219C597500CB6625 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
 		AF52250E219BA23600A2A467 /* Nightfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF522511219BA23600A2A467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +30,7 @@
 		AF99EF8A219BD070004A252B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFA9211821AC2F7F009B740A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		AFA9211C21AC416E009B740A /* About.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
+		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				AF4333E3219C597500CB6625 /* DarkModeManager.swift */,
+				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA9211821AC2F7F009B740A /* AboutViewController.swift */,
+				AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */,
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
 				AF52253B219BB6A800A2A467 /* Scripts */,
@@ -160,7 +166,9 @@
 			files = (
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */,
+				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF4333E4219C597500CB6625 /* DarkModeManager.swift in Sources */,
+				AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
