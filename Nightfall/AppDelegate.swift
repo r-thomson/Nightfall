@@ -51,12 +51,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func handleMenubarPress(sender: NSStatusBarButton) {
 		guard let event = NSApp.currentEvent else { return }
 		
-		if event.type == .leftMouseUp {
-			handleTogglePress()
-		} else if event.type == .rightMouseUp {
+		if event.type == .rightMouseUp || event.modifierFlags.contains(.control) {
+			// Handle right click/control click
 			menubarItem.menu = menubarContextMenu
 			menubarItem.button?.performClick(sender)
 			menubarItem.menu = nil // Clear the menu property so the next click will work properly
+			
+		} else if event.type == .leftMouseUp {
+			// Handle left click
+			handleTogglePress()
+			
 		}
 	}
 	
