@@ -71,7 +71,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			showFadeOverlay()
 		}
 		
-		try? toggleDarkMode()
+		do {
+			try toggleDarkMode()
+		} catch {
+			let alert = NSAlert()
+			
+			switch error as? ToggleDarkModeError {
+			case .insufficientPermissions:
+				alert.messageText = "System Events are not enabled for Nightfall."
+				alert.informativeText = "Nightfall needs access to System Events to enable and disable dark mode. Enable \"Automation\" for Nightfall in System Preferences to use Nightfall."
+			
+			case .appleScriptError(let dictionary):
+				alert.messageText = "An unknown AppleScript error ocurred."
+				if let errorNumber = dictionary?["NSAppleScriptErrorNumber"] as? Int {
+					alert.informativeText += "Error \(errorNumber)\n"
+				}
+				if let errorMessage = dictionary?["NSAppleScriptErrorMessage"] as? String {
+					alert.informativeText += "\"\(errorMessage)\""
+				}
+				
+			default:
+				alert.messageText = "An unknown error ocurred"
+			}
+			
+			alert.runModal()
+		}
 	}
 	
 	@objc func handlePreferencesPress() {
