@@ -8,10 +8,30 @@
 
 import Foundation
 
-func toggleDarkMode() {
-	guard let scriptURL = Bundle.main.url(forResource: "ToggleDark", withExtension: "scpt") else { return }
-	let script = NSAppleScript(contentsOf: scriptURL, error: nil)
+func toggleDarkMode() throws {
 	var error: NSDictionary?
-	script?.executeAndReturnError(&error)
-	if (error != nil) { print(String(describing: error!)) }
+	
+	guard let scriptURL = Bundle.main.url(forResource: "ToggleDark", withExtension: "scpt") else {
+		throw ToggleDarkModeError.fileNotFound
+	}
+	
+	guard let script = NSAppleScript(contentsOf: scriptURL, error: &error) else {
+		throw ToggleDarkModeError.appleScriptError(error)
+	}
+	
+	script.executeAndReturnError(&error)
+	
+	if let error = error {
+		if error["NSAppleScriptErrorNumber"] as? Int == -1743 {
+			throw ToggleDarkModeError.insufficientPermissions
+		}
+		throw ToggleDarkModeError.appleScriptError(error)
+	}
+	
+}
+
+enum ToggleDarkModeError : Error {
+	case appleScriptError(NSDictionary?)
+	case fileNotFound
+	case insufficientPermissions
 }

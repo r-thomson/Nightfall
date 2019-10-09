@@ -71,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			showFadeOverlay()
 		}
 		
-		toggleDarkMode()
+		try? toggleDarkMode()
 	}
 	
 	@objc func handlePreferencesPress() {
