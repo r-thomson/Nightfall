@@ -49,6 +49,8 @@
 				<key>default</key>
 				<string>Toggle Dark Mode</string>
 			</dict>
+			<key>NSTimeout</key>
+			<string>500</string>
 		</dict>
 	</array>
 </dict>
