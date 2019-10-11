@@ -34,5 +34,22 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>^~@t</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>toggleDark</string>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Toggle Dark Mode</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		
+		NSApp.servicesProvider = self
+		
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
 			"UseFade" : true,
@@ -111,6 +113,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		aboutWindow?.showWindow(self)
 		aboutWindow?.window?.makeKeyAndOrderFront(self)
 		NSApp.activate(ignoringOtherApps: true)
+	}
+	
+	@objc func toggleDark(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
+		handleTogglePress()
 	}
 	
 }
