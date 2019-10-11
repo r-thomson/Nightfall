@@ -15,4 +15,9 @@ class PreferencesViewController: NSViewController {
         
     }
     
+	@IBAction func openKeyboardPreferences(_ sender: NSButton) {
+		let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Keyboard.prefPane")
+		NSWorkspace.shared.open(url)
+	}
+	
 }
