@@ -18,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	lazy var aboutWindow: NSWindowController? = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "aboutWindowController") as? NSWindowController
 	
+	// Used to return focus to the last application used
+	var lastActiveApp: NSRunningApplication?
+	var shouldReturnFocus = false
+	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		
 		NSApp.servicesProvider = self
@@ -47,6 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Configure the preferences popover
 		preferencesPopover.behavior = .transient
 		preferencesPopover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "preferencesViewController") as? PreferencesViewController
+		
+		// Used to track the last active application
+		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(applicationDidDeactivate), name: NSWorkspace.didDeactivateApplicationNotification, object: nil)
 	}
 	
 	/// Handler function for whenever the menu bar button is clicked on
@@ -116,7 +123,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	@objc func toggleDark(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
+		shouldReturnFocus = true
 		handleTogglePress()
+	}
+	
+	@objc func applicationDidDeactivate(_ notification: NSNotification) {
+		lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+	}
+	
+	func applicationDidBecomeActive(_ notification: Notification) {
+		if let lastFocusedApp = lastActiveApp, shouldReturnFocus {
+			lastFocusedApp.activate()
+		}
+		
+		shouldReturnFocus = false
+		lastActiveApp = nil
 	}
 	
 }
