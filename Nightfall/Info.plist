@@ -37,17 +37,17 @@
 	<key>NSServices</key>
 	<array>
 		<dict>
-			<key>NSKeyEquivalent</key>
-			<dict>
-				<key>default</key>
-				<string>^~@t</string>
-			</dict>
 			<key>NSMessage</key>
-			<string>toggleDark</string>
+			<string>toggleDarkService</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
 				<string>Toggle Dark Mode</string>
+			</dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>^~@t</string>
 			</dict>
 			<key>NSTimeout</key>
 			<string>500</string>

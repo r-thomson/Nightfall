@@ -122,7 +122,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		NSApp.activate(ignoringOtherApps: true)
 	}
 	
-	@objc func toggleDark(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
+	/// Handler function for the "Toggle Dark Mode" global service
+	@objc func toggleDarkService(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
 		shouldReturnFocus = true
 		handleTogglePress()
 	}
@@ -132,8 +133,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func applicationDidBecomeActive(_ notification: Notification) {
-		if let lastFocusedApp = lastActiveApp, shouldReturnFocus {
-			lastFocusedApp.activate()
+		if let lastActiveApp = lastActiveApp, shouldReturnFocus {
+			lastActiveApp.activate()
 		}
 		
 		shouldReturnFocus = false
