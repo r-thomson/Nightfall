@@ -24,14 +24,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		
-		NSApp.servicesProvider = self
-		
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
 			"UseFade" : true,
 			"FadeDelay" : 0.6,
 			"FadeDuration" : 0.6
 			])
+		
+		// Register the services provider (this object)
+		NSApp.servicesProvider = self
 		
 		// Make the context menu
 		menubarContextMenu.addItem(withTitle: "Toggle Dark Mode", action: #selector(handleTogglePress), keyEquivalent: "")
@@ -133,7 +134,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func applicationDidBecomeActive(_ notification: Notification) {
-		if let lastActiveApp = lastActiveApp, shouldReturnFocus {
+		if shouldReturnFocus, let lastActiveApp = lastActiveApp {
 			lastActiveApp.activate()
 		}
 		
