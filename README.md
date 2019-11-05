@@ -1,4 +1,4 @@
 # Nightfall
 A menu bar utility for toggling dark mode in macOS Mojave
 
-![Application screenshot](https://i.imgur.com/OSbAnvV.png)
+![Animation showing the app in use](https://giant.gfycat.com/JitteryJampackedCalf.gif)
