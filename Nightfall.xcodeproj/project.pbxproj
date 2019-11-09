@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */; };
-		AF4333E4219C597500CB6625 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* DarkModeManager.swift */; };
+		AF4333E4219C597500CB6625 /* SetSystemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
-		AF522541219BB74C00A2A467 /* ToggleDark.scpt in Resources */ = {isa = PBXBuildFile; fileRef = AF52253D219BB74C00A2A467 /* ToggleDark.scpt */; };
 		AF99EF77219BCE08004A252B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF99EF79219BCE08004A252B /* Main.storyboard */; };
 		AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9211821AC2F7F009B740A /* AboutViewController.swift */; };
 		AFA9211D21AC416E009B740A /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AFA9211C21AC416E009B740A /* About.rtf */; };
@@ -20,13 +19,12 @@
 
 /* Begin PBXFileReference section */
 		AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		AF4333E3219C597500CB6625 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
+		AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSystemAppearance.swift; sourceTree = "<group>"; };
 		AF52250E219BA23600A2A467 /* Nightfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF522511219BA23600A2A467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF522515219BA23800A2A467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF52251A219BA23800A2A467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF52251B219BA23800A2A467 /* Nightfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightfall.entitlements; sourceTree = "<group>"; };
-		AF52253D219BB74C00A2A467 /* ToggleDark.scpt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToggleDark.scpt; sourceTree = "<group>"; };
 		AF99EF8A219BD070004A252B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFA9211821AC2F7F009B740A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		AFA9211C21AC416E009B740A /* About.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
@@ -63,27 +61,18 @@
 		AF522510219BA23600A2A467 /* Nightfall */ = {
 			isa = PBXGroup;
 			children = (
-				AF4333E3219C597500CB6625 /* DarkModeManager.swift */,
+				AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */,
 				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA9211821AC2F7F009B740A /* AboutViewController.swift */,
 				AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */,
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
-				AF52253B219BB6A800A2A467 /* Scripts */,
 				AFA9211C21AC416E009B740A /* About.rtf */,
 				AF52251A219BA23800A2A467 /* Info.plist */,
 				AF52251B219BA23800A2A467 /* Nightfall.entitlements */,
 			);
 			path = Nightfall;
-			sourceTree = "<group>";
-		};
-		AF52253B219BB6A800A2A467 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				AF52253D219BB74C00A2A467 /* ToggleDark.scpt */,
-			);
-			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +142,6 @@
 				AF522516219BA23800A2A467 /* Assets.xcassets in Resources */,
 				AF99EF77219BCE08004A252B /* Main.storyboard in Resources */,
 				AFA9211D21AC416E009B740A /* About.rtf in Resources */,
-				AF522541219BB74C00A2A467 /* ToggleDark.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +155,7 @@
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */,
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
-				AF4333E4219C597500CB6625 /* DarkModeManager.swift in Sources */,
+				AF4333E4219C597500CB6625 /* SetSystemAppearance.swift in Sources */,
 				AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

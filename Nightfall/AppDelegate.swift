@@ -82,11 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 		
 		do {
-			try toggleDarkMode()
+			try setSystemAppearance(to: .toggle)
 		} catch {
 			let alert = NSAlert()
 			
-			switch error as? ToggleDarkModeError {
+			switch error as? SetSystemAppearanceError {
 			case .insufficientPermissions:
 				alert.messageText = "System Events are not enabled for Nightfall."
 				alert.informativeText = "Nightfall needs access to System Events to enable and disable dark mode. Enable \"Automation\" for Nightfall in System Preferences to use Nightfall."
