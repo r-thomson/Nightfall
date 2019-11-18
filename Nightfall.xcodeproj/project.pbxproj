@@ -12,6 +12,7 @@
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
 		AF99EF77219BCE08004A252B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF99EF79219BCE08004A252B /* Main.storyboard */; };
+		AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */; };
 		AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9211821AC2F7F009B740A /* AboutViewController.swift */; };
 		AFA9211D21AC416E009B740A /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AFA9211C21AC416E009B740A /* About.rtf */; };
 		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
@@ -26,6 +27,7 @@
 		AF52251A219BA23800A2A467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF52251B219BA23800A2A467 /* Nightfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightfall.entitlements; sourceTree = "<group>"; };
 		AF99EF8A219BD070004A252B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightfallStatusItemController.swift; sourceTree = "<group>"; };
 		AFA9211821AC2F7F009B740A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		AFA9211C21AC416E009B740A /* About.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
 		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		AF522510219BA23600A2A467 /* Nightfall */ = {
 			isa = PBXGroup;
 			children = (
+				AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */,
 				AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */,
 				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */,
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,

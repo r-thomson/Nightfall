@@ -10,9 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-	
-	let menubarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-	let menubarContextMenu = NSMenu()
+	let statusItemController = NightfallStatusItemController()
 	
 	let preferencesPopover = NSPopover()
 	
@@ -23,7 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var shouldReturnFocus = false
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-		
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
 			"UseFade" : true,
@@ -34,44 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Register the services provider (this object)
 		NSApp.servicesProvider = self
 		
-		// Make the context menu
-		menubarContextMenu.addItem(withTitle: "Toggle Dark Mode", action: #selector(handleTogglePress), keyEquivalent: "")
-		menubarContextMenu.addItem(withTitle: "Preferences...", action: #selector(handlePreferencesPress), keyEquivalent: ",")
-		menubarContextMenu.addItem(NSMenuItem.separator())
-		menubarContextMenu.addItem(withTitle: "About Nightfall", action: #selector(handleAboutPress), keyEquivalent: "")
-		menubarContextMenu.addItem(withTitle: "Quit Nightfall", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
-		
-		// Configure the menubar button
-		if let menubarButton = menubarItem.button {
-			menubarButton.image = NSImage(named: "MenubarIcon")
-			menubarButton.toolTip = "Click to toggle dark mode\nRight click for more options"
-			menubarButton.sendAction(on: [.leftMouseUp, .rightMouseUp])
-			menubarButton.action = #selector(handleMenubarPress)
-		}
-		
 		// Configure the preferences popover
 		preferencesPopover.behavior = .transient
 		preferencesPopover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "preferencesViewController") as? PreferencesViewController
 		
 		// Used to track the last active application
 		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(applicationDidDeactivate), name: NSWorkspace.didDeactivateApplicationNotification, object: nil)
-	}
-	
-	/// Handler function for whenever the menu bar button is clicked on
-	@objc func handleMenubarPress(sender: NSStatusBarButton) {
-		guard let event = NSApp.currentEvent else { return }
-		
-		if event.type == .rightMouseUp || event.modifierFlags.contains(.control) {
-			// Handle right click/control click
-			menubarItem.menu = menubarContextMenu
-			menubarItem.button?.performClick(sender)
-			menubarItem.menu = nil // Clear the menu property so the next click will work properly
-			
-		} else if event.type == .leftMouseUp {
-			// Handle left click
-			handleTogglePress()
-			
-		}
 	}
 	
 	// MARK: - Context menu item handlers
@@ -110,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@objc func handlePreferencesPress() {
 		if !preferencesPopover.isShown {
-			if let button = menubarItem.button {
+			if let button = statusItemController.statusButton {
 				NSApplication.shared.activate(ignoringOtherApps: true)
 				preferencesPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
 			}
