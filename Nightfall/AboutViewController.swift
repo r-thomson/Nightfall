@@ -2,7 +2,6 @@
 //  AboutViewController.swift
 //  Nightfall
 //
-//  Created by Ryan Thomson on 11/26/18.
 //  Copyright © 2018 Ryan Thomson. All rights reserved.
 //
 
