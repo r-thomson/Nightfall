@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */; };
+		AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */; };
+		AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */; };
 		AF4333E4219C597500CB6625 /* SetSystemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGDirectDisplayID.swift; sourceTree = "<group>"; };
+		AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageOverlayWindow.swift; sourceTree = "<group>"; };
 		AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSystemAppearance.swift; sourceTree = "<group>"; };
 		AF52250E219BA23600A2A467 /* Nightfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF522511219BA23600A2A467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF2582E4238339680088E4B2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AF522505219BA23600A2A467 = {
 			isa = PBXGroup;
 			children = (
@@ -63,9 +75,11 @@
 		AF522510219BA23600A2A467 /* Nightfall */ = {
 			isa = PBXGroup;
 			children = (
+				AF2582E4238339680088E4B2 /* Extensions */,
 				AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */,
 				AF4333E3219C597500CB6625 /* SetSystemAppearance.swift */,
 				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
+				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA9211821AC2F7F009B740A /* AboutViewController.swift */,
 				AF1C5AEE21AD96BE00587A65 /* PreferencesViewController.swift */,
@@ -160,6 +174,8 @@
 				AFA9211921AC2F7F009B740A /* AboutViewController.swift in Sources */,
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF4333E4219C597500CB6625 /* SetSystemAppearance.swift in Sources */,
+				AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */,
+				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF1C5AEF21AD96BE00587A65 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
