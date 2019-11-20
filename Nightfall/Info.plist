@@ -48,7 +48,7 @@
 				<string>Toggle Dark Mode</string>
 			</dict>
 			<key>NSMessage</key>
-			<string>toggleDarkService</string>
+			<string>toggleDarkMode</string>
 			<key>NSTimeout</key>
 			<string>500</string>
 		</dict>

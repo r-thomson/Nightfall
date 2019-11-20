@@ -27,8 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			"FadeDuration" : 0.6
 			])
 		
-		// Register the services provider (this object)
-		NSApp.servicesProvider = self
+		// Register the services provider
+		NSApp.servicesProvider = ServicesProvider()
 		
 		// Configure the preferences popover
 		preferencesPopover.behavior = .transient
@@ -89,12 +89,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		aboutWindow?.showWindow(self)
 		aboutWindow?.window?.makeKeyAndOrderFront(self)
 		NSApp.activate(ignoringOtherApps: true)
-	}
-	
-	/// Handler function for the "Toggle Dark Mode" global service
-	@objc func toggleDarkService(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
-		shouldReturnFocus = true
-		handleTogglePress()
 	}
 	
 	func applicationDidBecomeActive(_ notification: Notification) {
