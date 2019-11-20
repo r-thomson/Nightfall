@@ -35,7 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		preferencesPopover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "preferencesViewController") as? PreferencesViewController
 		
 		// Used to track the last active application
-		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(applicationDidDeactivate), name: NSWorkspace.didDeactivateApplicationNotification, object: nil)
+		let center = NSWorkspace.shared.notificationCenter
+		let name = NSWorkspace.didDeactivateApplicationNotification
+		center.addObserver(forName: name, object: nil, queue: nil) { notification in
+			self.lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+		}
 	}
 	
 	// MARK: - Context menu item handlers
@@ -91,10 +95,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@objc func toggleDarkService(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
 		shouldReturnFocus = true
 		handleTogglePress()
-	}
-	
-	@objc func applicationDidDeactivate(_ notification: NSNotification) {
-		lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
 	}
 	
 	func applicationDidBecomeActive(_ notification: Notification) {
