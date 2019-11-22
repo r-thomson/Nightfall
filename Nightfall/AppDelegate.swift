@@ -76,21 +76,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
-	@objc func handlePreferencesPress() {
-		if !preferencesPopover.isShown {
-			if let button = statusItemController.statusButton {
-				NSApplication.shared.activate(ignoringOtherApps: true)
-				preferencesPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-			}
-		}
-	}
-	
-	@objc func handleAboutPress() {
-		aboutWindow?.showWindow(self)
-		aboutWindow?.window?.makeKeyAndOrderFront(self)
-		NSApp.activate(ignoringOtherApps: true)
-	}
-	
 	func applicationDidBecomeActive(_ notification: Notification) {
 		if shouldReturnFocus, let lastActiveApp = lastActiveApp {
 			lastActiveApp.activate()
@@ -100,4 +85,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		lastActiveApp = nil
 	}
 	
+	// MARK:- Window/Panel Opening Functions
+	
+	/// Opens the preferences popup, making this the foreground app in the process.
+	@objc func openPreferencesPopup(_ sender: Any? = nil) {
+		if !preferencesPopover.isShown {
+			if let button = statusItemController.statusButton {
+				preferencesPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+				NSApp.activate(ignoringOtherApps: true)
+			}
+		}
+	}
+	
+	/// Opens the application's About window, making this the foreground app in the process.
+	@objc func openAboutWindow(_ sender: Any? = nil) {
+		aboutWindow?.window?.makeKeyAndOrderFront(sender)
+		NSApp.activate(ignoringOtherApps: true)
+	}
 }

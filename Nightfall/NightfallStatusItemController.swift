@@ -21,9 +21,9 @@ class NightfallStatusItemController {
 		// Make the context menu
 		contextMenu.items = [
 			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.handleTogglePress), keyEquivalent: ""),
-			NSMenuItem(title: "Preferences...", action: #selector(AppDelegate.handlePreferencesPress), keyEquivalent: ","),
+			NSMenuItem(title: "Preferences...", action: #selector(AppDelegate.openPreferencesPopup), keyEquivalent: ","),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "About Nightfall", action: #selector(AppDelegate.handleAboutPress), keyEquivalent: ""),
+			NSMenuItem(title: "About Nightfall", action: #selector(AppDelegate.openAboutWindow), keyEquivalent: ""),
 			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"),
 		]
 		
