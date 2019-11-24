@@ -11,9 +11,9 @@ import Cocoa
 class ServicesProvider {
 	/// Service handler for the "Toggle Dark Mode" service
 	@objc func toggleDarkMode(_: Any, _: Any) {
-		// FIXME: Move this behavior out of AppDelegate
-		let delegate = NSApp.delegate as! AppDelegate
+		guard let delegate = NSApp.delegate as? AppDelegate else { return }
+		
 		delegate.shouldReturnFocus = true
-		delegate.perform(#selector(AppDelegate.handleTogglePress))
+		delegate.toggleDarkMode()
 	}
 }

@@ -42,9 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
-	// MARK: - Context menu item handlers
-	
-	@objc func handleTogglePress() {
+	@objc func toggleDarkMode() {
 		if UserDefaults.standard.bool(forKey: "UseFade") {
 			showFadeOverlay()
 		}
@@ -53,7 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			try setSystemAppearance(to: .toggle)
 		} catch {
 			let alert = NSAlert()
-			
 			switch error as? SetSystemAppearanceError {
 			case .insufficientPermissions:
 				alert.messageText = "System Events are not enabled for Nightfall."
@@ -71,7 +68,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			default:
 				alert.messageText = "An unknown error ocurred"
 			}
-			
 			alert.runModal()
 		}
 	}

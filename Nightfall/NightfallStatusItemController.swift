@@ -20,7 +20,7 @@ class NightfallStatusItemController {
 	init() {
 		// Make the context menu
 		contextMenu.items = [
-			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.handleTogglePress), keyEquivalent: ""),
+			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.toggleDarkMode), keyEquivalent: ""),
 			NSMenuItem(title: "Preferences...", action: #selector(AppDelegate.openPreferencesPopup), keyEquivalent: ","),
 			NSMenuItem.separator(),
 			NSMenuItem(title: "About Nightfall", action: #selector(AppDelegate.openAboutWindow), keyEquivalent: ""),
@@ -51,8 +51,7 @@ class NightfallStatusItemController {
 			statusItem.menu = nil // Clear the menu property so the next click will work properly
 		} else if event.type == .leftMouseUp {
 			// Handle left click
-			// FIXME: Move this behavior out of AppDelegate
-			NSApp.delegate!.perform(#selector(AppDelegate.handleTogglePress))
+			(NSApp.delegate as! AppDelegate).toggleDarkMode()
 		}
 	}
 }
