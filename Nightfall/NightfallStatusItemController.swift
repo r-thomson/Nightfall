@@ -33,24 +33,33 @@ class NightfallStatusItemController {
 			button.toolTip = "Click to toggle dark mode\nRight click for more options"
 			button.target = self
 			button.action = #selector(handleStatusButtonPress)
-			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+			button.sendAction(on: [.leftMouseDown, .leftMouseUp, .rightMouseDown, .rightMouseUp])
 		}
+	}
+	
+	func showContextMenu(_ sender: Any? = nil) {
+		statusItem.menu = contextMenu
+		statusButton?.performClick(sender)
+		statusItem.menu = nil // Clear the menu property so the next click will work properly
 	}
 	
 	// MARK: Handler functions
 	
 	/// Handler function called when the status bar button is clicked. Determines if the click was a
-	/// left click or a right click, and takes the apropriate action.
-	@objc private func handleStatusButtonPress(sender: NSStatusBarButton) {
+	/// left click or a right click (including control-click), and takes the apropriate action.
+	@objc private func handleStatusButtonPress(_ sender: NSStatusBarButton) {
 		guard let event = NSApp.currentEvent else { return }
 		
-		if event.type == .rightMouseUp || event.modifierFlags.contains(.control) {
-			// Handle right click/control click
-			statusItem.menu = contextMenu
-			statusItem.button?.performClick(sender)
-			statusItem.menu = nil // Clear the menu property so the next click will work properly
-		} else if event.type == .leftMouseUp {
-			// Handle left click
+		// Prevents odd behavior when starting a click while the cursor is moving quickly
+		guard event.clickCount > 0 else { return }
+		
+		let controlKey = event.modifierFlags.contains(.control)
+		let leftClick = event.type == .leftMouseDown || event.type == .leftMouseUp
+		let rightClick = event.type == .rightMouseDown || event.type == .rightMouseUp
+		
+		if rightClick || (controlKey && leftClick) {
+			showContextMenu(sender)
+		} else if event.type == .leftMouseUp { // Not on mouse down
 			(NSApp.delegate as! AppDelegate).toggleDarkMode()
 		}
 	}
