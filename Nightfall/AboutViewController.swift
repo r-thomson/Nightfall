@@ -9,6 +9,8 @@ import Cocoa
 
 class AboutViewController: NSViewController {
 	
+	static let shared =  NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "About Window Controller") as! NSWindowController
+	
 	@IBOutlet var titleText: NSTextField!
 	@IBOutlet var versionText: NSTextField!
 	@IBOutlet var descriptionText: NSTextField!

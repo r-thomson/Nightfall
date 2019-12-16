@@ -24,9 +24,11 @@ class NightfallStatusItemController {
 			NSMenuItem.separator(),
 			NSMenuItem(title: "Preferences...", action: #selector(AppDelegate.openPreferencesPopup), keyEquivalent: ","),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "About Nightfall", action: #selector(AppDelegate.openAboutWindow), keyEquivalent: ""),
-			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"),
+			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow), keyEquivalent: ""),
+			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate), keyEquivalent: "q"),
 		]
+		
+		contextMenu.item(withTitle: "About Nightfall")?.target = self
 		
 		// Configure the status item button
 		if let button = statusButton {
@@ -63,5 +65,12 @@ class NightfallStatusItemController {
 		} else if event.type == .leftMouseUp { // Not on mouse down
 			(NSApp.delegate as! AppDelegate).toggleDarkMode()
 		}
+	}
+	
+	/// Handler function called when the "About Nightfall" menu item is clicked. Opens the About window,
+	/// making this the foreground app in the process.
+	@objc func handleOpenAboutWindow(_ sender: NSMenuItem) {
+		AboutViewController.shared.window?.makeKeyAndOrderFront(sender)
+		NSApp.activate(ignoringOtherApps: true)
 	}
 }

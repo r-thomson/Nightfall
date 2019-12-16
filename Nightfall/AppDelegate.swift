@@ -13,8 +13,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	let preferencesPopover = NSPopover()
 	
-	lazy var aboutWindow: NSWindowController? = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "aboutWindowController") as? NSWindowController
-	
 	// Used to return focus to the last application used
 	var lastActiveApp: NSRunningApplication?
 	var shouldReturnFocus = false
@@ -91,11 +89,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				NSApp.activate(ignoringOtherApps: true)
 			}
 		}
-	}
-	
-	/// Opens the application's About window, making this the foreground app in the process.
-	@objc func openAboutWindow(_ sender: Any? = nil) {
-		aboutWindow?.window?.makeKeyAndOrderFront(sender)
-		NSApp.activate(ignoringOtherApps: true)
 	}
 }
