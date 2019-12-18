@@ -13,7 +13,7 @@ class NightfallStatusItemController {
 	private let contextMenu = NSMenu()
 	
 	/// Alias for `statusItem.button`
-	var statusButton: NSButton? {
+	var statusButton: NSStatusBarButton? {
 		return statusItem.button
 	}
 	
@@ -22,12 +22,13 @@ class NightfallStatusItemController {
 		contextMenu.items = [
 			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.toggleDarkMode), keyEquivalent: ""),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "Preferences...", action: #selector(AppDelegate.openPreferencesPopup), keyEquivalent: ","),
+			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences), keyEquivalent: ","),
 			NSMenuItem.separator(),
 			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow), keyEquivalent: ""),
 			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate), keyEquivalent: "q"),
 		]
 		
+		contextMenu.item(withTitle: "Preferences...")?.target = self
 		contextMenu.item(withTitle: "About Nightfall")?.target = self
 		
 		// Configure the status item button
@@ -72,5 +73,16 @@ class NightfallStatusItemController {
 	@objc func handleOpenAboutWindow(_ sender: NSMenuItem) {
 		AboutViewController.shared.window?.makeKeyAndOrderFront(sender)
 		NSApp.activate(ignoringOtherApps: true)
+	}
+	
+	/// Handler function called when the "Preferences..." menu item is clicked. Shows the preference
+	/// popover if it is not already visible, and makes this the foreground app.
+	@objc func handleOpenPreferences(_ sender: NSMenuItem) {
+		guard let button = statusButton else { return }
+		
+		if !PreferencesPopover.shared.isShown {
+			PreferencesPopover.shared.show(statusButton: button)
+			NSApp.activate(ignoringOtherApps: true)
+		}
 	}
 }

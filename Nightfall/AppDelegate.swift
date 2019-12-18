@@ -11,8 +11,6 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 	let statusItemController = NightfallStatusItemController()
 	
-	let preferencesPopover = NSPopover()
-	
 	// Used to return focus to the last application used
 	var lastActiveApp: NSRunningApplication?
 	var shouldReturnFocus = false
@@ -27,10 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
-		
-		// Configure the preferences popover
-		preferencesPopover.behavior = .transient
-		preferencesPopover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "preferencesViewController") as? PreferencesViewController
 		
 		// Used to track the last active application
 		let center = NSWorkspace.shared.notificationCenter
@@ -77,17 +71,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		shouldReturnFocus = false
 		lastActiveApp = nil
-	}
-	
-	// MARK:- Window/Panel Opening Functions
-	
-	/// Opens the preferences popup, making this the foreground app in the process.
-	@objc func openPreferencesPopup(_ sender: Any? = nil) {
-		if !preferencesPopover.isShown {
-			if let button = statusItemController.statusButton {
-				preferencesPopover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-				NSApp.activate(ignoringOtherApps: true)
-			}
-		}
 	}
 }
