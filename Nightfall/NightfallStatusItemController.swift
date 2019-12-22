@@ -8,7 +8,7 @@
 import Cocoa
 
 /// Wrapper class around Nightfall's `NSStatusItem` instance.
-class NightfallStatusItemController {
+final class NightfallStatusItemController {
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 	private let contextMenu = NSMenu()
 	

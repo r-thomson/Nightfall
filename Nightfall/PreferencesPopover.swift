@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class PreferencesPopover: NSPopover {
+final class PreferencesPopover: NSPopover {
 	
 	static let shared = PreferencesPopover()
 	

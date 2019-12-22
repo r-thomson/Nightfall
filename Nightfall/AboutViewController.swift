@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class AboutViewController: NSViewController {
+final class AboutViewController: NSViewController {
 	
 	static let shared =  NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "About Window Controller") as! NSWindowController
 	

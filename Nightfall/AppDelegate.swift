@@ -8,7 +8,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
 	let statusItemController = NightfallStatusItemController()
 	
 	// Used to return focus to the last application used
