@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -681,27 +680,6 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="NJB-lk-VHR">
-            <objects>
-                <windowController storyboardIdentifier="About Window Controller" showSeguePresentationStyle="single" id="Fud-WB-9KM" sceneMemberID="viewController">
-                    <window key="window" title="About Nightfall" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="wqO-am-HzE">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" transient="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="400" height="200"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <connections>
-                            <outlet property="delegate" destination="Fud-WB-9KM" id="mme-bR-y6j"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="5f7-fI-jbe" kind="relationship" relationship="window.shadowedContentViewController" id="OFv-TB-eyx"/>
-                    </connections>
-                </windowController>
-                <customObject id="fdt-Jr-f9u" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="283"/>
-        </scene>
         <!--Preferences-->
         <scene sceneID="koI-ra-I57">
             <objects>
@@ -893,117 +871,5 @@
             </objects>
             <point key="canvasLocation" x="518" y="588"/>
         </scene>
-        <!--About-->
-        <scene sceneID="Hue-I9-6lf">
-            <objects>
-                <viewController title="About" id="5f7-fI-jbe" customClass="AboutViewController" customModule="Nightfall" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="UDf-lM-w8f">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="180"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdV-iL-Tl5">
-                                <rect key="frame" x="20" y="106" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="EdV-iL-Tl5" secondAttribute="height" multiplier="1:1" id="4yS-eT-a4g"/>
-                                    <constraint firstAttribute="width" constant="64" id="ePK-YU-fr8"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="6tc-dS-TGA"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BxX-wo-pJ7">
-                                <rect key="frame" x="102" y="154" width="58" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Nightfall" id="l4K-NQ-JqE">
-                                    <font key="font" metaFont="systemSemibold" size="13"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-Ks-ff1">
-                                <rect key="frame" x="257" y="20" width="175" height="14"/>
-                                <gestureRecognizers>
-                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Fx7-Oj-dSj">
-                                        <connections>
-                                            <action selector="websiteLinkClicked:" target="5f7-fI-jbe" id="kNW-95-qtU"/>
-                                        </connections>
-                                    </clickGestureRecognizer>
-                                </gestureRecognizers>
-                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="github.com/r-thomson/Nightfall" allowsEditingTextAttributes="YES" id="L4o-0o-eTn">
-                                    <font key="font" metaFont="systemMedium" size="11"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="websiteLinkClicked:" target="5f7-fI-jbe" id="aTP-Kg-Kib"/>
-                                </connections>
-                            </textField>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-O8-hfH">
-                                <rect key="frame" x="104" y="42" width="326" height="104"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2jg-6x-civ">
-                                    <rect key="frame" x="0.0" y="0.0" width="326" height="104"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Yr-CPK">
-                                            <rect key="frame" x="0.0" y="0.0" width="326" height="16"/>
-                                            <textFieldCell key="cell" allowsUndo="NO" placeholderString="Description Text" allowsEditingTextAttributes="YES" id="H3F-yh-Yt0">
-                                                <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ReH-Yr-CPK" firstAttribute="top" secondItem="2jg-6x-civ" secondAttribute="top" id="2Du-4n-2Y3"/>
-                                        <constraint firstItem="ReH-Yr-CPK" firstAttribute="leading" secondItem="2jg-6x-civ" secondAttribute="leading" constant="2" id="Rd0-CJ-lyt"/>
-                                        <constraint firstAttribute="trailing" secondItem="ReH-Yr-CPK" secondAttribute="trailing" constant="2" id="sh8-3H-8k7"/>
-                                    </constraints>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="uRA-Rj-PXO">
-                                    <rect key="frame" x="-100" y="-100" width="94" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="EBy-Be-24L">
-                                    <rect key="frame" x="310" y="0.0" width="16" height="104"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2nB-2y-rmA">
-                                <rect key="frame" x="161" y="156" width="36" height="11"/>
-                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" placeholderString="version" id="5sy-Vh-9WE">
-                                    <font key="font" metaFont="label" size="9"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2nB-2y-rmA" secondAttribute="trailing" constant="20" symbolic="YES" id="07P-ki-EIb"/>
-                            <constraint firstAttribute="trailing" secondItem="JGt-O8-hfH" secondAttribute="trailing" constant="20" symbolic="YES" id="2MI-dZ-m8F"/>
-                            <constraint firstItem="p1F-Ks-ff1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UDf-lM-w8f" secondAttribute="leading" constant="20" symbolic="YES" id="2ek-iH-52M"/>
-                            <constraint firstItem="p1F-Ks-ff1" firstAttribute="trailing" secondItem="JGt-O8-hfH" secondAttribute="trailing" id="FeQ-HO-AQf"/>
-                            <constraint firstItem="EdV-iL-Tl5" firstAttribute="top" secondItem="UDf-lM-w8f" secondAttribute="top" constant="10" id="J0O-sf-NRN"/>
-                            <constraint firstItem="BxX-wo-pJ7" firstAttribute="leading" secondItem="EdV-iL-Tl5" secondAttribute="trailing" constant="20" id="V9p-Lv-dvp"/>
-                            <constraint firstItem="2nB-2y-rmA" firstAttribute="firstBaseline" secondItem="BxX-wo-pJ7" secondAttribute="firstBaseline" id="agS-5z-suh"/>
-                            <constraint firstItem="JGt-O8-hfH" firstAttribute="leading" secondItem="BxX-wo-pJ7" secondAttribute="leading" id="apm-bO-9qQ"/>
-                            <constraint firstItem="2nB-2y-rmA" firstAttribute="leading" secondItem="BxX-wo-pJ7" secondAttribute="trailing" constant="5" id="emL-uD-Jaq"/>
-                            <constraint firstItem="BxX-wo-pJ7" firstAttribute="top" secondItem="UDf-lM-w8f" secondAttribute="top" constant="10" id="o5r-ra-lwi"/>
-                            <constraint firstItem="EdV-iL-Tl5" firstAttribute="leading" secondItem="UDf-lM-w8f" secondAttribute="leading" constant="20" symbolic="YES" id="pR8-eU-6Ek"/>
-                            <constraint firstAttribute="bottom" secondItem="p1F-Ks-ff1" secondAttribute="bottom" constant="20" symbolic="YES" id="u5Z-I2-vzb"/>
-                            <constraint firstItem="p1F-Ks-ff1" firstAttribute="top" secondItem="JGt-O8-hfH" secondAttribute="bottom" constant="8" symbolic="YES" id="xUw-qA-EmH"/>
-                            <constraint firstItem="JGt-O8-hfH" firstAttribute="top" secondItem="BxX-wo-pJ7" secondAttribute="bottom" constant="8" symbolic="YES" id="zuI-6A-n2x"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionText" destination="ReH-Yr-CPK" id="CEv-TA-E8h"/>
-                        <outlet property="titleText" destination="BxX-wo-pJ7" id="q5S-e3-CfS"/>
-                        <outlet property="versionText" destination="2nB-2y-rmA" id="NTa-vO-m4Y"/>
-                        <outlet property="websiteText" destination="p1F-Ks-ff1" id="1qx-vo-9v8"/>
-                    </connections>
-                </viewController>
-                <customObject id="Cg3-3Z-tuD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="641" y="234"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="NSApplicationIcon" width="32" height="32"/>
-    </resources>
 </document>

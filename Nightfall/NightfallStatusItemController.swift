@@ -71,7 +71,7 @@ final class NightfallStatusItemController {
 	/// Handler function called when the "About Nightfall" menu item is clicked. Opens the About window,
 	/// making this the foreground app in the process.
 	@objc func handleOpenAboutWindow(_ sender: NSMenuItem) {
-		AboutViewController.shared.window?.makeKeyAndOrderFront(sender)
+		AboutWindowController.shared.showWindow(sender)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 	
