@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftUI
 
 final class PreferencesPopover: NSPopover {
 	
@@ -15,8 +16,7 @@ final class PreferencesPopover: NSPopover {
 		super.init()
 		
 		self.behavior = .transient
-		self.contentViewController = NSStoryboard(name: "Main", bundle: nil)
-			.instantiateController(withIdentifier: "preferencesViewController") as? NSViewController
+		self.contentViewController = NSHostingController(rootView: PreferencesView())
 	}
 	
 	required init?(coder: NSCoder) {
