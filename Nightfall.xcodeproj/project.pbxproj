@@ -23,6 +23,7 @@
 		AFA9211D21AC416E009B740A /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AFA9211C21AC416E009B740A /* About.rtf */; };
 		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
 		AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC736C923B01D7800D80A21 /* AboutView.swift */; };
+		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		AFA9211C21AC416E009B740A /* About.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
 		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
 		AFC736C923B01D7800D80A21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = /Users/ryanthomson/Developer/Nightfall/Nightfall/Views/PreferencesView.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC736C923B01D7800D80A21 /* AboutView.swift */,
+				AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */,
+				AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */,
 				AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */,
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */,
