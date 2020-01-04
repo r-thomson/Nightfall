@@ -43,7 +43,7 @@ final class ObservableUserDefault<T>: NSObject, ObservableObject {
 	
 	// Respond to changes of the UserDefault's value to update any subscribers
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?,
-							   change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+							   change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 		if object as? UserDefaults === defaults && keyPath == key {
 			self.objectWillChange.send()
 		}

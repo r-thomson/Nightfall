@@ -8,7 +8,7 @@
 import Cocoa
 import SwiftUI
 
-final class AboutWindowController : NSWindowController {
+final class AboutWindowController: NSWindowController {
 	static let shared = AboutWindowController()
 	
 	init() {

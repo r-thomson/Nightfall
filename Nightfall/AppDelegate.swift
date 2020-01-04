@@ -18,9 +18,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
-			"UseFade" : true,
-			"FadeDelay" : 0.6,
-			"FadeDuration" : 0.6
+			"UseFade": true,
+			"FadeDelay": 0.6,
+			"FadeDuration": 0.6
 		])
 		
 		// Register the services provider

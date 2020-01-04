@@ -33,13 +33,13 @@ func setSystemAppearance(to appearance: SystemAppearance) throws {
 	}
 }
 
-enum SystemAppearance : String {
+enum SystemAppearance: String {
 	case light = "no"
 	case dark = "yes"
 	case toggle = "not dark mode"
 }
 
-enum SetSystemAppearanceError : Error {
+enum SetSystemAppearanceError: Error {
 	case appleScriptError(NSDictionary?)
 	case insufficientPermissions
 }
