@@ -9,7 +9,6 @@ import Cocoa
 import SwiftUI
 
 final class PreferencesPopover: NSPopover {
-	
 	static let shared = PreferencesPopover()
 	
 	override init() {

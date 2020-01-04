@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Nightfall
 //
-//  Copyright © 2018 Ryan Thomson. All rights reserved.
+//  Copyright © 2019 Ryan Thomson. All rights reserved.
 //
 
 import Cocoa
@@ -21,15 +21,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			"UseFade" : true,
 			"FadeDelay" : 0.6,
 			"FadeDuration" : 0.6
-			])
+		])
 		
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
 		
 		// Used to track the last active application
-		let center = NSWorkspace.shared.notificationCenter
+		let nc = NSWorkspace.shared.notificationCenter
 		let name = NSWorkspace.didDeactivateApplicationNotification
-		center.addObserver(forName: name, object: nil, queue: nil) { notification in
+		nc.addObserver(forName: name, object: nil, queue: nil) { notification in
 			self.lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
 		}
 	}
@@ -65,6 +65,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	func applicationDidBecomeActive(_ notification: Notification) {
+		// Return focus to the last active application if the shouldReturnFocus flag is set
+		// This is used when the app's service is called
 		if shouldReturnFocus, let lastActiveApp = lastActiveApp {
 			lastActiveApp.activate()
 		}

@@ -22,6 +22,7 @@
 		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
 		AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC736C923B01D7800D80A21 /* AboutView.swift */; };
 		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
+		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
 		AFC736C923B01D7800D80A21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = /Users/ryanthomson/Developer/Nightfall/Nightfall/Views/PreferencesView.swift; sourceTree = "<absolute>"; };
+		AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */,
+				AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */,
 				AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */,
+				AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */,
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
 				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */,
@@ -356,7 +360,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -380,7 +383,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";

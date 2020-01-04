@@ -20,16 +20,13 @@ final class NightfallStatusItemController {
 	init() {
 		// Make the context menu
 		contextMenu.items = [
-			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.toggleDarkMode), keyEquivalent: ""),
+			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.toggleDarkMode)),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences), keyEquivalent: ","),
+			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow), keyEquivalent: ""),
-			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate), keyEquivalent: "q"),
+			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow(_:)), target: self),
+			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"),
 		]
-		
-		contextMenu.item(withTitle: "Preferences...")?.target = self
-		contextMenu.item(withTitle: "About Nightfall")?.target = self
 		
 		// Configure the status item button
 		if let button = statusButton {
@@ -41,7 +38,7 @@ final class NightfallStatusItemController {
 		}
 	}
 	
-	func showContextMenu(_ sender: Any? = nil) {
+	func showContextMenu(_ sender: AnyObject? = nil) {
 		statusItem.menu = contextMenu
 		statusButton?.performClick(sender)
 		statusItem.menu = nil // Clear the menu property so the next click will work properly

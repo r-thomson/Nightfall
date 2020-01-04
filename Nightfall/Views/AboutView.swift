@@ -20,7 +20,8 @@ struct AboutView: View {
 		return try? String(contentsOf: fileURL, encoding: .utf8)
 	}()
 	
-	private static func openGithubWebpage() {
+	/// Open's the project's GitHub page
+	private static func openGithubURL() {
 		if let url = URL(string: "https://github.com/r-thomson/Nightfall") {
 			NSWorkspace.shared.open(url)
 		}
@@ -48,7 +49,7 @@ struct AboutView: View {
 						.padding(.trailing, 2) // Fixes clipping on the right side
 				}
 				
-				Button(action: AboutView.openGithubWebpage) {
+				Button(action: AboutView.openGithubURL) {
 					Text("github.com/r-thomson/Nightfall")
 				}
 				.buttonStyle(BorderlessButtonStyle())
