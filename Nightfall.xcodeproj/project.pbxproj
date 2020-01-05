@@ -90,16 +90,14 @@
 			children = (
 				AF2582E4238339680088E4B2 /* Extensions */,
 				AFCF6CB123B523FA00C5CA70 /* Utility */,
+				AFC736C623B01D6200D80A21 /* Views */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */,
 				AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */,
-				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
-				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
-				AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */,
-				AFC736C623B01D6200D80A21 /* Views */,
 				AF939CD823B3FA2E00053801 /* AboutWindowController.swift */,
 				AF28E82323AA997E007FA92D /* PreferencesPopover.swift */,
+				AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */,
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
 				AF939CD623B1472700053801 /* About.txt */,
@@ -121,7 +119,9 @@
 		AFCF6CB123B523FA00C5CA70 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
 				AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */,
+				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
