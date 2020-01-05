@@ -11,9 +11,7 @@ import Cocoa
 final class ServicesProvider {
 	/// Service handler for the "Toggle Dark Mode" service
 	@objc func toggleDarkMode(_: Any, _: Any) {
-		guard let delegate = NSApp.delegate as? AppDelegate else { return }
-		
-		delegate.shouldReturnFocus = true
-		delegate.toggleDarkMode()
+		Nightfall.toggleDarkMode()
+		(NSApp.delegate as! AppDelegate).shouldReturnFocus = true
 	}
 }

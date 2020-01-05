@@ -20,7 +20,7 @@ final class NightfallStatusItemController {
 	init() {
 		// Make the context menu
 		contextMenu.items = [
-			NSMenuItem(title: "Toggle Dark Mode", action: #selector(AppDelegate.toggleDarkMode)),
+			NSMenuItem(title: "Toggle Dark Mode", action: #selector(handleToggleDarkMode(_:))),
 			NSMenuItem.separator(),
 			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
 			NSMenuItem.separator(),
@@ -61,19 +61,22 @@ final class NightfallStatusItemController {
 		if rightClick || (controlKey && leftClick) {
 			showContextMenu(sender)
 		} else if event.type == .leftMouseUp { // Not on mouse down
-			(NSApp.delegate as! AppDelegate).toggleDarkMode()
+			toggleDarkMode()
 		}
 	}
 	
-	/// Handler function called when the "About Nightfall" menu item is clicked. Opens the About window,
-	/// making this the foreground app in the process.
+	/// Handler function for when the "Toggle Dark Mode" menu item is clicked.
+	@objc func handleToggleDarkMode(_ sender: NSMenuItem) {
+		toggleDarkMode()
+	}
+	
+	/// Handler function called when the "About Nightfall" menu item is clicked.
 	@objc func handleOpenAboutWindow(_ sender: NSMenuItem) {
 		AboutWindowController.shared.showWindow(sender)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 	
-	/// Handler function called when the "Preferences..." menu item is clicked. Shows the preference
-	/// popover if it is not already visible, and makes this the foreground app.
+	/// Handler function called when the "Preferences..." menu item is clicked.
 	@objc func handleOpenPreferences(_ sender: NSMenuItem) {
 		guard let button = statusButton else { return }
 		

@@ -14,6 +14,7 @@
 		AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
+		AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */; };
 		AF939CD723B1472700053801 /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = AF939CD623B1472700053801 /* About.txt */; };
 		AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CD823B3FA2E00053801 /* AboutWindowController.swift */; };
 		AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */; };
@@ -36,6 +37,7 @@
 		AF522515219BA23800A2A467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF52251A219BA23800A2A467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF52251B219BA23800A2A467 /* Nightfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightfall.entitlements; sourceTree = "<group>"; };
+		AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleDarkMode.swift; sourceTree = "<group>"; };
 		AF939CD623B1472700053801 /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
 		AF939CD823B3FA2E00053801 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUserDefault.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				AFCF6CB123B523FA00C5CA70 /* Utility */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */,
+				AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */,
 				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
 				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
+				AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */,
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */,
 				AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */,
