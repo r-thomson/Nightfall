@@ -7,11 +7,7 @@
 
 import Cocoa
 
-func showFadeOverlay() {
-	let defaults = UserDefaults.standard
-	let fadeDelay = defaults.fadeDelay
-	let fadeDuration = defaults.fadeDuration
-	
+func showFadeOverlay(duration: Double, after delay: Double) {
 	for screen in NSScreen.screens {
 		let cgDisplayID = CGDirectDisplayID(screen: screen)
 		guard let screenshot = CGDisplayCreateImage(cgDisplayID) else { continue }
@@ -19,9 +15,9 @@ func showFadeOverlay() {
 		let overlay = CGImageOverlayWindow(screenshot, position: screen.frame)
 		overlay.orderFront(nil)
 		
-		DispatchQueue.main.asyncAfter(deadline: .now() + fadeDelay) { [overlay] in
+		DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [overlay] in
 			NSAnimationContext.runAnimationGroup({ context in
-				context.duration = fadeDuration
+				context.duration = duration
 				overlay.animator().alphaValue = 0.0
 			}, completionHandler: {
 				overlay.orderOut(nil)
