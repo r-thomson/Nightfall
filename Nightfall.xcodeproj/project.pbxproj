@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0046BA23C026CB001A2C61 /* UserDefaults.swift */; };
 		AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */; };
 		AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E82323AA997E007FA92D /* PreferencesPopover.swift */; };
 		AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF0046BA23C026CB001A2C61 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGDirectDisplayID.swift; sourceTree = "<group>"; };
 		AF28E82323AA997E007FA92D /* PreferencesPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPopover.swift; sourceTree = "<group>"; };
 		AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageOverlayWindow.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */,
 				AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */,
+				AF0046BA23C026CB001A2C61 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
 				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */,
+				AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */,
 				AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

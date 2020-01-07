@@ -12,7 +12,7 @@ import Cocoa
 /// This function includes behavior not in `setSystemAppearance(to:)`, such as displaying the fade
 /// animation and displaying errors in alerts.
 func toggleDarkMode() {
-	if UserDefaults.standard.bool(forKey: "UseFade") {
+	if UserDefaults.standard.useFade {
 		showFadeOverlay()
 	}
 	

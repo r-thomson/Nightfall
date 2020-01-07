@@ -9,8 +9,8 @@ import Cocoa
 
 func showFadeOverlay() {
 	let defaults = UserDefaults.standard
-	let fadeDelay = defaults.double(forKey: "FadeDelay")
-	let fadeDuration = defaults.double(forKey: "FadeDuration")
+	let fadeDelay = defaults.fadeDelay
+	let fadeDuration = defaults.fadeDuration
 	
 	for screen in NSScreen.screens {
 		let cgDisplayID = CGDirectDisplayID(screen: screen)

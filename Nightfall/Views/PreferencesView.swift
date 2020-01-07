@@ -23,9 +23,12 @@ struct PreferencesView: View {
 		NSWorkspace.shared.open(url)
 	}
 	
-	@ObservedObject private var useFade = ObservableUserDefault<Bool>("UseFade")
-	@ObservedObject private var fadeDelay = ObservableUserDefault<Double>("FadeDelay")
-	@ObservedObject private var fadeDuration = ObservableUserDefault<Double>("FadeDuration")
+	@ObservedObject private var useFade =
+		ObservableUserDefault<Bool>(UserDefaults.Keys.useFade)
+	@ObservedObject private var fadeDelay =
+		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDelay)
+	@ObservedObject private var fadeDuration =
+		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
 	
 	var body: some View {
 		VStack(alignment: .leading) {
