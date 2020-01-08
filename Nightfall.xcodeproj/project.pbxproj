@@ -139,6 +139,7 @@
 				AF52250A219BA23600A2A467 /* Sources */,
 				AF52250B219BA23600A2A467 /* Frameworks */,
 				AF52250C219BA23600A2A467 /* Resources */,
+				AF3DB17F23C55B6B00E94891 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -200,6 +201,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AF3DB17F23C55B6B00E94891 /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "git=`sh /etc/profile; which git`\nbundleVersion=\"`\"$git\" rev-parse --short HEAD`\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $bundleVersion\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF52250A219BA23600A2A467 /* Sources */ = {
@@ -361,6 +383,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = "-1";
 				DEVELOPMENT_TEAM = 48NA7APC3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Nightfall/Info.plist;
@@ -384,6 +407,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = "-1";
 				DEVELOPMENT_TEAM = 48NA7APC3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Nightfall/Info.plist;
