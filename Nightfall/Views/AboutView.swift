@@ -13,6 +13,11 @@ struct AboutView: View {
 		return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 	}()
 	
+	/// The app's build number as a string
+	private static let buildString: String? = {
+		return Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+	}()
+	
 	/// The contents of the "About.txt" file
 	private static let aboutText: String? = {
 		guard let fileURL = Bundle.main.url(forResource: "About", withExtension: "txt")
@@ -38,7 +43,7 @@ struct AboutView: View {
 				HStack(alignment: .lastTextBaseline, spacing: 5) {
 					Text("Nightfall")
 						.font(.system(size: 13, weight: .semibold))
-					Text("Version \(AboutView.versionString ?? "?")")
+					Text("Version \(AboutView.versionString ?? "?") (\(AboutView.buildString ?? "?"))")
 						.font(.system(size: 9))
 						.foregroundColor(.secondary)
 				}
