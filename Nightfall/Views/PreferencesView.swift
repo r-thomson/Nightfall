@@ -18,17 +18,14 @@ struct PreferencesView: View {
 	}()
 	
 	/// Opens the Keyboard pane in System Preferences
-	private static func openSystemKeyboardPrefs() {
+	private func openSystemKeyboardPrefs() {
 		let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Keyboard.prefPane")
 		NSWorkspace.shared.open(url)
 	}
 	
-	@ObservedObject private var useFade =
-		ObservableUserDefault<Bool>(UserDefaults.Keys.useFade)
-	@ObservedObject private var fadeDelay =
-		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDelay)
-	@ObservedObject private var fadeDuration =
-		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
+	@ObservedObject private var useFade = ObservableUserDefault<Bool>(UserDefaults.Keys.useFade)
+	@ObservedObject private var fadeDelay = ObservableUserDefault<Double>(UserDefaults.Keys.fadeDelay)
+	@ObservedObject private var fadeDuration = ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -55,7 +52,7 @@ struct PreferencesView: View {
 				.font(.system(size: 12))
 				.allowsTightening(true)
 			
-			Button(action: PreferencesView.openSystemKeyboardPrefs) {
+			Button(action: openSystemKeyboardPrefs) {
 				Text("Open System Preferences")
 			}
 			.frame(maxWidth: .infinity, alignment: .center)
