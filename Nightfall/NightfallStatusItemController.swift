@@ -33,15 +33,19 @@ final class NightfallStatusItemController {
 			button.image = NSImage(named: "MenubarIcon")
 			button.toolTip = "Click to toggle dark mode\nRight click for more options"
 			button.target = self
-			button.action = #selector(handleStatusButtonPress)
-			button.sendAction(on: [.leftMouseDown, .leftMouseUp, .rightMouseDown, .rightMouseUp])
+			button.action = #selector(handleStatusButtonPress(_:))
+			button.sendAction(on: [.leftMouseUp, .rightMouseUp])
 		}
 	}
 	
 	func showContextMenu(_ sender: AnyObject? = nil) {
 		statusItem.menu = contextMenu
+		
+		defer {
+			statusItem.menu = nil // Clear the menu property so the next click will work properly
+		}
+		
 		statusButton?.performClick(sender)
-		statusItem.menu = nil // Clear the menu property so the next click will work properly
 	}
 	
 	// MARK: Handler functions
@@ -51,14 +55,18 @@ final class NightfallStatusItemController {
 	@objc private func handleStatusButtonPress(_ sender: NSStatusBarButton) {
 		guard let event = NSApp.currentEvent else { return }
 		
-		// Prevents odd behavior when starting a click while the cursor is moving quickly
 		guard event.clickCount > 0 else { return }
 		
-		let controlKey = event.modifierFlags.contains(.control)
-		let leftClick = event.type == .leftMouseDown || event.type == .leftMouseUp
-		let rightClick = event.type == .rightMouseDown || event.type == .rightMouseUp
+		/* TODO: Handle mouse up events
+		The context menu should open on mouse down, as is standard for macOS menus. However,
+		this caused focus issues with windows/popups. This seems that the system was treating
+		the entire action as one click, so the user needed to click a second time to end the
+		click and give the window focus.
+		*/
 		
-		if rightClick || (controlKey && leftClick) {
+		let controlKey = event.modifierFlags.contains(.control)
+		
+		if event.type == .rightMouseUp || (controlKey && event.type == .leftMouseUp) {
 			showContextMenu(sender)
 		} else if event.type == .leftMouseUp { // Not on mouse down
 			toggleDarkMode()
