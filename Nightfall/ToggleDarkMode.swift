@@ -39,22 +39,14 @@ func toggleDarkMode() {
 		try setSystemAppearance(to: .toggle)
 	} catch {
 		let alert = NSAlert()
-		switch error as? SetSystemAppearanceError {
-		case .insufficientPermissions:
-			alert.messageText = "System Events are not enabled for Nightfall."
-			alert.informativeText = "Nightfall needs access to System Events to enable and disable dark mode. Enable \"Automation\" for Nightfall in System Preferences to use Nightfall."
-		
-		case .appleScriptError(let dictionary):
-			alert.messageText = "An unknown AppleScript error ocurred."
-			if let errorNumber = dictionary?["NSAppleScriptErrorNumber"] as? Int {
+		if let error = error as? AppleScriptError {
+			alert.messageText = "An AppleScript error ocurred."
+			if let errorNumber = error.errorNumber {
 				alert.informativeText += "Error \(errorNumber)\n"
 			}
-			if let errorMessage = dictionary?["NSAppleScriptErrorMessage"] as? String {
+			if let errorMessage = error.errorMessage {
 				alert.informativeText += "\"\(errorMessage)\""
 			}
-			
-		default:
-			alert.messageText = "An unknown error ocurred"
 		}
 		alert.runModal()
 	}

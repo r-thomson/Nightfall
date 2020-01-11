@@ -26,10 +26,7 @@ func setSystemAppearance(to appearance: SystemAppearance) throws {
 	script.executeAndReturnError(&error)
 	
 	if let error = error {
-		if error["NSAppleScriptErrorNumber"] as? Int == -1743 {
-			throw SetSystemAppearanceError.insufficientPermissions
-		}
-		throw SetSystemAppearanceError.appleScriptError(error)
+		throw AppleScriptError(error)
 	}
 }
 
@@ -39,7 +36,14 @@ enum SystemAppearance: String {
 	case toggle = "not dark mode"
 }
 
-enum SetSystemAppearanceError: Error {
-	case appleScriptError(NSDictionary?)
-	case insufficientPermissions
+struct AppleScriptError : Error {
+	let errorDict: NSDictionary
+	let errorNumber: Int?
+	let errorMessage: String?
+	
+	init(_ errorInfo: NSDictionary) {
+		self.errorDict = errorInfo
+		self.errorNumber = errorDict["NSAppleScriptErrorNumber"] as? Int
+		self.errorMessage = errorDict["NSAppleScriptErrorMessage"] as? String
+	}
 }
