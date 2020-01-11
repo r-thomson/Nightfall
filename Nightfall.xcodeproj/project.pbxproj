@@ -25,6 +25,7 @@
 		AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC736C923B01D7800D80A21 /* AboutView.swift */; };
 		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
+		AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		AFC736C923B01D7800D80A21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = /Users/ryanthomson/Developer/Nightfall/Nightfall/Views/PreferencesView.swift; sourceTree = "<absolute>"; };
 		AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
+		AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
 				AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */,
+				AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */,
 				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 			);
 			path = Utility;
@@ -236,6 +239,7 @@
 				AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */,
 				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */,
+				AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */,
 				AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */,
 				AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */,
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
