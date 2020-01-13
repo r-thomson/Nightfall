@@ -8,7 +8,7 @@
 import Cocoa
 
 struct PermissionUtil {
-	static func systemEventsPermission(canPrompt: Bool) -> PermissionStatus {
+	static func systemEventsPermission(canPrompt: Bool) -> Bool {
 		let bundleId = "com.apple.systemevents"
 		
 		// The System Events application must be running
@@ -18,16 +18,7 @@ struct PermissionUtil {
 		let target = NSAppleEventDescriptor(bundleIdentifier: bundleId)
 		let status = AEDeterminePermissionToAutomateTarget(target.aeDesc, typeWildCard, typeWildCard, canPrompt)
 		
-		switch status {
-		case noErr:
-			return .permitted
-		case OSStatus(errAEEventWouldRequireUserConsent):
-			return .notYetPrompted
-		case OSStatus(errAEEventNotPermitted):
-			return .notPermitted
-		default: // includes procNotFound
-			return .indeterminate
-		}
+		return status == noErr
 	}
 	
 	static func screenCapturePermission(canPrompt: Bool) -> Bool {
@@ -64,12 +55,5 @@ struct PermissionUtil {
 			// No windows have readable titles
 			return false
 		}
-	}
-	
-	enum PermissionStatus {
-		case notPermitted
-		case notYetPrompted
-		case permitted
-		case indeterminate
 	}
 }
