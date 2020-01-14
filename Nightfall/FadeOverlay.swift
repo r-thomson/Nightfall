@@ -8,6 +8,9 @@
 import Cocoa
 
 func showFadeOverlay(duration: Double, after delay: Double) {
+	// Screen capture permissions are required for the effect to work
+	guard PermissionUtil.screenCapturePermission(canPrompt: true) else { return }
+	
 	for screen in NSScreen.screens {
 		let cgDisplayID = CGDirectDisplayID(screen: screen)
 		guard let screenshot = CGDisplayCreateImage(cgDisplayID) else { continue }
