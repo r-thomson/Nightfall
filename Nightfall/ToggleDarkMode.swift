@@ -12,7 +12,7 @@ import Cocoa
 /// This function includes behavior not in `setSystemAppearance(to:)`, such as displaying the fade
 /// animation and displaying errors in alerts.
 func toggleDarkMode() {
-	if !PermissionUtil.systemEventsPermission(canPrompt: true) {
+	if !PermissionUtil.checkSystemEventsPermission(canPrompt: true) {
 		let alert = NSAlert()
 		alert.messageText = "System Events are not enabled for Nightfall."
 		alert.informativeText = "Nightfall needs access to System Events to enable and disable dark mode. Enable \"Automation\" for Nightfall in System Preferences to use Nightfall."

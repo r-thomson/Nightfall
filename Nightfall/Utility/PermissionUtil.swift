@@ -8,7 +8,7 @@
 import Cocoa
 
 struct PermissionUtil {
-	static func systemEventsPermission(canPrompt: Bool) -> Bool {
+	static func checkSystemEventsPermission(canPrompt: Bool) -> Bool {
 		let bundleId = "com.apple.systemevents"
 		
 		// The System Events application must be running
@@ -21,7 +21,7 @@ struct PermissionUtil {
 		return status == noErr
 	}
 	
-	static func screenCapturePermission(canPrompt: Bool) -> Bool {
+	static func checkScreenCapturePermission(canPrompt: Bool) -> Bool {
 		if canPrompt {
 			let stream = CGDisplayStream(display: CGMainDisplayID(),
 										 outputWidth: 1,
