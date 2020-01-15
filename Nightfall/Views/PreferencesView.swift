@@ -37,6 +37,7 @@ struct PreferencesView: View {
 				DurationField(label: "Delay", value: $fadeDelay.value)
 				DurationField(label: "Duration", value: $fadeDuration.value)
 			}
+			.disabled(!useFade.value)
 			.controlSize(.small)
 			.padding(.leading, 24)
 			
