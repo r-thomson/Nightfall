@@ -18,13 +18,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
-			UserDefaults.Keys.useFade: false,
+			UserDefaults.Keys.useFade: true,
 			UserDefaults.Keys.fadeDelay: 0.6,
 			UserDefaults.Keys.fadeDuration: 0.6
 		])
-		
-		// TODO: Re-enable fade effect by default
-		// It has been disabled to make setting permissions easier
 		
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
