@@ -27,7 +27,7 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSAppleEventsUsageDescription</key>
-	<string>System Events are required to enable/disable dark mode.</string>
+	<string>Nightfall needs to be able to control System Events to enable/disable dark mode.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Ryan Thomson. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
