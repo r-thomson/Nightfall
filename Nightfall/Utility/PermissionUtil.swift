@@ -9,13 +9,18 @@ import Cocoa
 
 struct PermissionUtil {
 	static func checkSystemEventsPermission(canPrompt: Bool) -> Bool {
-		let bundleId = "com.apple.systemevents"
+		let bundleID = "com.apple.systemevents"
 		
-		// The System Events application must be running
-		NSWorkspace.shared.launchApplication(withBundleIdentifier: bundleId,
-			additionalEventParamDescriptor: nil, launchIdentifier: nil)
+		// First, make sure the System Events application is running...
 		
-		let target = NSAppleEventDescriptor(bundleIdentifier: bundleId)
+		if NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).isEmpty {
+			NSWorkspace.shared.launchApplication(withBundleIdentifier: bundleID, options: .withoutActivation,
+				additionalEventParamDescriptor: nil, launchIdentifier: nil)
+		}
+		
+		// ...then check the permission
+		
+		let target = NSAppleEventDescriptor(bundleIdentifier: bundleID)
 		let status = AEDeterminePermissionToAutomateTarget(target.aeDesc, typeWildCard, typeWildCard, canPrompt)
 		
 		return status == noErr
