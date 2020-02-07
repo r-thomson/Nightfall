@@ -10,6 +10,7 @@
 		AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0046BA23C026CB001A2C61 /* UserDefaults.swift */; };
 		AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */; };
 		AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E82323AA997E007FA92D /* PreferencesPopover.swift */; };
+		AF39030D23EDD6BE004F24EF /* NightfallLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFC6D03D23ECC16900540635 /* NightfallLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */; };
 		AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* SystemAppearance.swift */; };
 		AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */; };
@@ -30,6 +31,29 @@
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
 		AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF39030E23EDD749004F24EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF522506219BA23600A2A467 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFC6D03C23ECC16900540635;
+			remoteInfo = NightfallLauncher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AF39030C23EDD6A8004F24EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				AF39030D23EDD6BE004F24EF /* NightfallLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AF0046BA23C026CB001A2C61 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -96,6 +120,7 @@
 				AF522510219BA23600A2A467 /* Nightfall */,
 				AFC6D03E23ECC16900540635 /* NightfallLauncher */,
 				AF52250F219BA23600A2A467 /* Products */,
+				AFC6D05323EDD21100540635 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +167,13 @@
 			path = NightfallLauncher;
 			sourceTree = "<group>";
 		};
+		AFC6D05323EDD21100540635 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFC736C623B01D6200D80A21 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +204,13 @@
 				AF52250A219BA23600A2A467 /* Sources */,
 				AF52250B219BA23600A2A467 /* Frameworks */,
 				AF52250C219BA23600A2A467 /* Resources */,
+				AF39030C23EDD6A8004F24EF /* CopyFiles */,
 				AF3DB17F23C55B6B00E94891 /* Set Build Number */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AF39030F23EDD749004F24EF /* PBXTargetDependency */,
 			);
 			name = Nightfall;
 			productName = Nightfall;
@@ -338,6 +372,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF39030F23EDD749004F24EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFC6D03C23ECC16900540635 /* NightfallLauncher */;
+			targetProxy = AF39030E23EDD749004F24EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AF99EF79219BCE08004A252B /* Main.storyboard */ = {
@@ -539,8 +581,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.NightfallLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -562,8 +606,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.NightfallLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
