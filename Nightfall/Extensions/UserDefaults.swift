@@ -12,6 +12,7 @@ extension UserDefaults {
 		static let useFade = "UseFade"
 		static let fadeDelay = "FadeDelay"
 		static let fadeDuration = "FadeDuration"
+		static let startAtLogin = "StartAtLogin"
 	}
 	
 	var useFade: Bool {
@@ -27,5 +28,10 @@ extension UserDefaults {
 	var fadeDuration: Double {
 		get { self.double(forKey: Keys.fadeDuration) }
 		set { self.set(newValue, forKey: Keys.fadeDuration) }
+	}
+	
+	var startAtLogin: Bool {
+		get { self.bool(forKey: Keys.startAtLogin) }
+		set { self.set(newValue, forKey: Keys.startAtLogin) }
 	}
 }
