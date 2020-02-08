@@ -120,7 +120,6 @@
 				AF522510219BA23600A2A467 /* Nightfall */,
 				AFC6D03E23ECC16900540635 /* NightfallLauncher */,
 				AF52250F219BA23600A2A467 /* Products */,
-				AFC6D05323EDD21100540635 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,13 +164,6 @@
 				AFC6D04C23ECC16A00540635 /* NightfallLauncher.entitlements */,
 			);
 			path = NightfallLauncher;
-			sourceTree = "<group>";
-		};
-		AFC6D05323EDD21100540635 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AFC736C623B01D6200D80A21 /* Views */ = {
