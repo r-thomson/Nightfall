@@ -23,9 +23,14 @@ struct PreferencesView: View {
 		NSWorkspace.shared.open(url)
 	}
 	
-	@ObservedObject private var useFade = ObservableUserDefault<Bool>(UserDefaults.Keys.useFade)
-	@ObservedObject private var fadeDelay = ObservableUserDefault<Double>(UserDefaults.Keys.fadeDelay)
-	@ObservedObject private var fadeDuration = ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
+	@ObservedObject private var useFade =
+		ObservableUserDefault<Bool>(UserDefaults.Keys.useFade)
+	@ObservedObject private var fadeDelay =
+		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDelay)
+	@ObservedObject private var fadeDuration =
+		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
+	@ObservedObject private var startAtLogin =
+		ObservableUserDefault<Bool>(UserDefaults.Keys.startAtLogin)
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -45,6 +50,10 @@ struct PreferencesView: View {
 				.font(.system(size: 9))
 				.foregroundColor(.secondary)
 				.frame(maxWidth: .infinity, alignment: .center)
+			
+			Toggle(isOn: $startAtLogin.value) {
+				Text("Start Nightfall at login")
+			}
 			
 			Divider()
 				.padding(.vertical, 8)
