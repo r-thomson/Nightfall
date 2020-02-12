@@ -16,6 +16,7 @@
 		AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
+		AF559C7323EFA3400010EAE1 /* GithubAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF559C7223EFA3400010EAE1 /* GithubAPIModels.swift */; };
 		AF7A00B223EE5F890062D841 /* SemanticVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7A00B123EE5F890062D841 /* SemanticVersion.swift */; };
 		AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */; };
 		AF939CD723B1472700053801 /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = AF939CD623B1472700053801 /* About.txt */; };
@@ -30,6 +31,7 @@
 		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
 		AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */; };
+		AFEA8B2523F1C5430047EDD0 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		AF522515219BA23800A2A467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF52251A219BA23800A2A467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF52251B219BA23800A2A467 /* Nightfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightfall.entitlements; sourceTree = "<group>"; };
+		AF559C7223EFA3400010EAE1 /* GithubAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIModels.swift; sourceTree = "<group>"; };
 		AF7A00B123EE5F890062D841 /* SemanticVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticVersion.swift; sourceTree = "<group>"; };
 		AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleDarkMode.swift; sourceTree = "<group>"; };
 		AF939CD623B1472700053801 /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreferencesView.swift; path = /Users/ryanthomson/Developer/Nightfall/Nightfall/Views/PreferencesView.swift; sourceTree = "<absolute>"; };
 		AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
 		AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
+		AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2582E4238339680088E4B2 /* Extensions */,
+				AF559C7423EFA3680010EAE1 /* Networking */,
 				AFCF6CB123B523FA00C5CA70 /* Utility */,
 				AFC736C623B01D6200D80A21 /* Views */,
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
@@ -152,6 +157,23 @@
 				AF52251B219BA23800A2A467 /* Nightfall.entitlements */,
 			);
 			path = Nightfall;
+			sourceTree = "<group>";
+		};
+		AF559C7423EFA3680010EAE1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */,
+				AF559C7523EFA36C0010EAE1 /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AF559C7523EFA36C0010EAE1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF559C7223EFA3400010EAE1 /* GithubAPIModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		AFC6D03E23ECC16900540635 /* NightfallLauncher */ = {
@@ -346,11 +368,13 @@
 				AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */,
 				AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */,
 				AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */,
+				AF559C7323EFA3400010EAE1 /* GithubAPIModels.swift in Sources */,
 				AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */,
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
 				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */,
 				AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */,
+				AFEA8B2523F1C5430047EDD0 /* GithubAPI.swift in Sources */,
 				AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
