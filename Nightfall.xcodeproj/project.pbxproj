@@ -23,9 +23,8 @@
 		AF99EF77219BCE08004A252B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF99EF79219BCE08004A252B /* Main.storyboard */; };
 		AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */; };
 		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
+		AFC6499323F4925000E321E8 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFC6499223F4925000E321E8 /* Application.xib */; };
 		AFC6D04023ECC16900540635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6D03F23ECC16900540635 /* AppDelegate.swift */; };
-		AFC6D04423ECC16A00540635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC6D04323ECC16A00540635 /* Assets.xcassets */; };
-		AFC6D04A23ECC16A00540635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC6D04823ECC16A00540635 /* Main.storyboard */; };
 		AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC736C923B01D7800D80A21 /* AboutView.swift */; };
 		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
@@ -74,10 +73,9 @@
 		AF99EF8A219BD070004A252B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightfallStatusItemController.swift; sourceTree = "<group>"; };
 		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
+		AFC6499223F4925000E321E8 /* Application.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		AFC6D03D23ECC16900540635 /* NightfallLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightfallLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC6D03F23ECC16900540635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AFC6D04323ECC16A00540635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AFC6D04923ECC16A00540635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFC6D04B23ECC16A00540635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFC6D04C23ECC16A00540635 /* NightfallLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NightfallLauncher.entitlements; sourceTree = "<group>"; };
 		AFC736C923B01D7800D80A21 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -158,8 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC6D03F23ECC16900540635 /* AppDelegate.swift */,
-				AFC6D04323ECC16A00540635 /* Assets.xcassets */,
-				AFC6D04823ECC16A00540635 /* Main.storyboard */,
+				AFC6499223F4925000E321E8 /* Application.xib */,
 				AFC6D04B23ECC16A00540635 /* Info.plist */,
 				AFC6D04C23ECC16A00540635 /* NightfallLauncher.entitlements */,
 			);
@@ -285,8 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFC6D04A23ECC16A00540635 /* Main.storyboard in Resources */,
-				AFC6D04423ECC16A00540635 /* Assets.xcassets in Resources */,
+				AFC6499323F4925000E321E8 /* Application.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,14 +374,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				AF99EF8A219BD070004A252B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AFC6D04823ECC16A00540635 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFC6D04923ECC16A00540635 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -559,7 +547,6 @@
 		AFC6D04E23ECC16A00540635 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NightfallLauncher/NightfallLauncher.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -584,7 +571,6 @@
 		AFC6D04F23ECC16A00540635 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NightfallLauncher/NightfallLauncher.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
