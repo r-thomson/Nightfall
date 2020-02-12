@@ -28,6 +28,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
 		
+		// Check for updates at startup and begin checking periodically
+		AppUpdateChecker.shared.checkForUpdate()
+		AppUpdateChecker.shared.startBackgroundChecking()
+		
 		// Begins observing changes to the "StartAtLogin" default. The observer
 		// function then reads the default to set/unset the app as a login item.
 		// Because .initial is specified, it will also be set at app startup.
