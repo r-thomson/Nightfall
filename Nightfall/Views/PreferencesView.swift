@@ -31,6 +31,8 @@ struct PreferencesView: View {
 		ObservableUserDefault<Double>(UserDefaults.Keys.fadeDuration)
 	@ObservedObject private var startAtLogin =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.startAtLogin)
+	@ObservedObject private var checkForUpdates =
+		ObservableUserDefault<Bool>(UserDefaults.Keys.checkForUpdates)
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -55,12 +57,17 @@ struct PreferencesView: View {
 				Text("Start Nightfall at login")
 			}
 			
+			Toggle(isOn: $checkForUpdates.value) {
+				Text("Check for new versions")
+			}
+			
 			Divider()
 				.padding(.vertical, 8)
 			
 			Text("Nightfall exposes a \"Toggle Dark Mode\" service that can have a global keyboard shortcut assigned in System Preferences.")
 				.font(.system(size: 12))
 				.allowsTightening(true)
+				.fixedSize(horizontal: false, vertical: true)
 			
 			Button(action: openSystemKeyboardPrefs) {
 				Text("Open System Preferences")

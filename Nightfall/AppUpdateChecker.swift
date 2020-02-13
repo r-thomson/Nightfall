@@ -33,6 +33,9 @@ final class AppUpdateChecker {
 	/// Checks if there is an update available by retrieving the latest release version from Nightfall's
 	/// GitHub repository. Updates `remoteVersion` and `isOutdated`.
 	func checkForUpdate() {
+		// Only check for updates if the user has the preference enabled
+		guard UserDefaults.standard.checkForUpdates else { return }
+		
 		GithubAPI.getLatestRelease() { (result) in
 			switch result {
 			case .success(let release):

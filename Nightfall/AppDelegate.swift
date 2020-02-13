@@ -22,7 +22,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			UserDefaults.Keys.useFade: true,
 			UserDefaults.Keys.fadeDelay: 0.6,
 			UserDefaults.Keys.fadeDuration: 0.6,
-			UserDefaults.Keys.startAtLogin: false
+			UserDefaults.Keys.startAtLogin: false,
+			UserDefaults.Keys.checkForUpdates: true
 		])
 		
 		// Register the services provider

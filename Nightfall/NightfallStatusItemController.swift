@@ -45,7 +45,8 @@ final class NightfallStatusItemController {
 		// Clear the menu property so the next click will work properly
 		defer { statusItem.menu = nil }
 		
-		let showUpdate = AppUpdateChecker.shared.isOutdated ?? false
+		let showUpdate = UserDefaults.standard.checkForUpdates &&
+			(AppUpdateChecker.shared.isOutdated ?? false)
 		contextMenu.item(withTitle: "Update...")?.isHidden = !showUpdate
 		
 		statusButton?.performClick(sender)
