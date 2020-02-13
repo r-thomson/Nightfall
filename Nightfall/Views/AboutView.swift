@@ -27,7 +27,7 @@ struct AboutView: View {
 	
 	/// Open's the project's GitHub page
 	private func openGithubURL() {
-		if let url = URL(string: "https://github.com/r-thomson/Nightfall") {
+		if let url = URL(string: "https://github.com/\(GithubAPI.repoFullName)") {
 			NSWorkspace.shared.open(url)
 		}
 	}
@@ -54,12 +54,10 @@ struct AboutView: View {
 						.padding(.trailing, 2) // Fixes clipping on the right side
 				}
 				
-				Button(action: openGithubURL) {
-					Text("github.com/r-thomson/Nightfall")
-				}
-				.buttonStyle(BorderlessButtonStyle())
-				.font(.system(size: 11, weight: .medium))
-				.frame(maxWidth: .infinity, alignment: .trailing)
+				Button("github.com/r-thomson/Nightfall", action: openGithubURL)
+					.buttonStyle(BorderlessButtonStyle())
+					.font(.system(size: 11, weight: .medium))
+					.frame(maxWidth: .infinity, alignment: .trailing)
 			}
 		}
 		.padding(.top, 10)

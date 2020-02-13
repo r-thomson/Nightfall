@@ -35,44 +35,41 @@ struct PreferencesView: View {
 		ObservableUserDefault<Bool>(UserDefaults.Keys.checkForUpdates)
 	
 	var body: some View {
-		VStack(alignment: .leading) {
-			Toggle(isOn: $useFade.value) {
-				Text("Smooth transition")
-			}
-			
-			VStack(spacing: 6) {
-				DurationField(label: "Delay", value: $fadeDelay.value)
-				DurationField(label: "Duration", value: $fadeDuration.value)
-			}
-			.disabled(!useFade.value)
-			.controlSize(.small)
-			.padding(.leading, 24)
-			
-			Text("Requires screen recording permission")
-				.font(.system(size: 9))
-				.foregroundColor(.secondary)
-				.frame(maxWidth: .infinity, alignment: .center)
-			
-			Toggle(isOn: $startAtLogin.value) {
-				Text("Start Nightfall at login")
-			}
-			
-			Toggle(isOn: $checkForUpdates.value) {
-				Text("Check for new versions")
+		VStack {
+			VStack(alignment: .leading) {
+				Toggle("Smooth transition", isOn: $useFade.value)
+				
+				VStack(spacing: 6) {
+					DurationField(label: "Delay", value: $fadeDelay.value)
+					DurationField(label: "Duration", value: $fadeDuration.value)
+				}
+				.disabled(!useFade.value)
+				.controlSize(.small)
+				.padding(.leading, 24)
+				
+				Text("Requires screen recording permission")
+					.font(.system(size: 9))
+					.foregroundColor(.secondary)
+					.frame(maxWidth: .infinity, alignment: .center)
+				
+				Toggle("Start Nightfall at login", isOn: $startAtLogin.value)
+				
+				Toggle("Check for new versions", isOn: $checkForUpdates.value)
+				
 			}
 			
 			Divider()
 				.padding(.vertical, 8)
 			
-			Text("Nightfall exposes a \"Toggle Dark Mode\" service that can have a global keyboard shortcut assigned in System Preferences.")
-				.font(.system(size: 12))
-				.allowsTightening(true)
-				.fixedSize(horizontal: false, vertical: true)
-			
-			Button(action: openSystemKeyboardPrefs) {
-				Text("Open System Preferences")
+			VStack(alignment: .leading) {
+				Text("Nightfall exposes a \"Toggle Dark Mode\" service that can have a global keyboard shortcut assigned in System Preferences.")
+					.font(.system(size: 12))
+					.allowsTightening(true)
+					.fixedSize(horizontal: false, vertical: true)
+				
+				Button("Open System Preferences", action: openSystemKeyboardPrefs)
+					.frame(maxWidth: .infinity, alignment: .center)
 			}
-			.frame(maxWidth: .infinity, alignment: .center)
 		}
 		.padding()
 		.frame(width: 225)
