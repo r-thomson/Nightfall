@@ -24,6 +24,7 @@ final class NightfallStatusItemController {
 			NSMenuItem.separator(),
 			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
 			NSMenuItem.separator(),
+			NSMenuItem(title: "Update...", action: #selector(handleOpenUpdateWindow(_:)), target: self),
 			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow(_:)), target: self),
 			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"),
 		]
@@ -41,9 +42,11 @@ final class NightfallStatusItemController {
 	func showContextMenu(_ sender: AnyObject? = nil) {
 		statusItem.menu = contextMenu
 		
-		defer {
-			statusItem.menu = nil // Clear the menu property so the next click will work properly
-		}
+		// Clear the menu property so the next click will work properly
+		defer { statusItem.menu = nil }
+		
+		let showUpdate = AppUpdateChecker.shared.isOutdated ?? false
+		contextMenu.item(withTitle: "Update...")?.isHidden = !showUpdate
 		
 		statusButton?.performClick(sender)
 	}
@@ -92,5 +95,11 @@ final class NightfallStatusItemController {
 			PreferencesPopover.shared.show(statusButton: button)
 			NSApp.activate(ignoringOtherApps: true)
 		}
+	}
+	
+	/// Handler function called when the "Update…" menu item is clicked.
+	@objc func handleOpenUpdateWindow(_ sender: NSMenuItem) {
+		let url = URL(string: "https://github.com/\(GithubAPI.repoFullName)/releases/latest")!
+		NSWorkspace.shared.open(url)
 	}
 }
