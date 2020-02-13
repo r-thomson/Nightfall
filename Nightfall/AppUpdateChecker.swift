@@ -26,8 +26,7 @@ final class AppUpdateChecker {
 	
 	init() {
 		updateScheduler.repeats = true
-		//updateScheduler.interval = 60 * 60 * 16 // 16 hours in seconds
-		updateScheduler.interval = 15 // temporary testing value
+		updateScheduler.interval = 60 * 60 * 16 // 16 hours in seconds
 	}
 	
 	/// Checks if there is an update available by retrieving the latest release version from Nightfall's
