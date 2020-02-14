@@ -29,8 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
 		
-		// Check for updates at startup and begin checking periodically
-		AppUpdateChecker.shared.checkForUpdate()
+		// Begin checking for updates periodically
 		AppUpdateChecker.shared.startBackgroundChecking()
 		
 		// Begins observing changes to the "StartAtLogin" default. The observer
