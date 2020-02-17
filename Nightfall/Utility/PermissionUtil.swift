@@ -7,7 +7,7 @@
 
 import Cocoa
 
-struct PermissionUtil {
+enum PermissionUtil {
 	static func checkSystemEventsPermission(canPrompt: Bool) -> Bool {
 		let bundleID = "com.apple.systemevents"
 		
