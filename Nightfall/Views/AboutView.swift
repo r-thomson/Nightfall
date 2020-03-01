@@ -57,6 +57,13 @@ struct AboutView: View {
 				Button("github.com/r-thomson/Nightfall", action: openGithubURL)
 					.buttonStyle(BorderlessButtonStyle())
 					.font(.system(size: 11, weight: .medium))
+					.onHover { (inside) in
+						if (inside) {
+							NSCursor.pointingHand.push()
+						} else {
+							NSCursor.pointingHand.pop()
+						}
+					}
 					.frame(maxWidth: .infinity, alignment: .trailing)
 			}
 		}
