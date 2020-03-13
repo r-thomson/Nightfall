@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF52250D219BA23600A2A467"
-               BuildableName = "Nightfall.app"
-               BlueprintName = "Nightfall"
+               BlueprintIdentifier = "AFC6D03C23ECC16900540635"
+               BuildableName = "NightfallLauncher.app"
+               BlueprintName = "NightfallLauncher"
                ReferencedContainer = "container:Nightfall.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AF52250D219BA23600A2A467"
-            BuildableName = "Nightfall.app"
-            BlueprintName = "Nightfall"
-            ReferencedContainer = "container:Nightfall.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
@@ -53,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AF52250D219BA23600A2A467"
-            BuildableName = "Nightfall.app"
-            BlueprintName = "Nightfall"
+            BlueprintIdentifier = "AFC6D03C23ECC16900540635"
+            BuildableName = "NightfallLauncher.app"
+            BlueprintName = "NightfallLauncher"
             ReferencedContainer = "container:Nightfall.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -70,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AF52250D219BA23600A2A467"
-            BuildableName = "Nightfall.app"
-            BlueprintName = "Nightfall"
+            BlueprintIdentifier = "AFC6D03C23ECC16900540635"
+            BuildableName = "NightfallLauncher.app"
+            BlueprintName = "NightfallLauncher"
             ReferencedContainer = "container:Nightfall.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
