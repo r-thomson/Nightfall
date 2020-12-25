@@ -17,7 +17,7 @@ Note: these builds are not signed; you will need to bypass Gatekeeper to run Nig
 Nightfall is available on [Homebrew Cask](https://github.com/Homebrew/homebrew-cask).
 
 ```
-brew cask install nightfall
+brew install --cask nightfall
 ```
 
 ### Direct Download
