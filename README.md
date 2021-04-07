@@ -8,7 +8,7 @@ Left clicking the icon toggles dark mode; right clicking reveals more options.
 
 ## Installation
 
-_Nightfall requires macOS Catalina_
+_Nightfall requires macOS Catalina or later_
 
 Note: these builds are not signed; you will need to bypass Gatekeeper to run Nightfall. See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
 
