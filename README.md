@@ -23,3 +23,7 @@ brew install --cask nightfall
 ### Direct Download
 
 Direct downloads can be found on the [**releases page**](https://github.com/r-thomson/Nightfall/releases).
+
+### Note: Screen Recording Permissions
+
+Nightfall includes an optional feature which smooths over the transition between light and dark modes. Because of how it is implemented, you will need to grant Nightfall screen recording permissions to use this feature (you can find the code for this [here](https://github.com/r-thomson/Nightfall/blob/master/Nightfall/FadeOverlay.swift)).
