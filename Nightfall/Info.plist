@@ -29,7 +29,7 @@
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Nightfall needs to be able to control System Events to enable/disable dark mode.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018–2020 Ryan Thomson. All rights reserved.</string>
+	<string>Copyright © 2018–2021 Ryan Thomson. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
