@@ -48,6 +48,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
+	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+		// If the user has hidden the menu bar icon, they can show it again by re-opening the app
+		self.statusItemController.statusItem.isVisible = true
+		
+		return true
+	}
+	
 	func applicationDidBecomeActive(_ notification: Notification) {
 		// Return focus to the last active application if the shouldReturnFocus flag is set
 		// This is used when the app's service is called

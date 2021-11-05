@@ -6,11 +6,14 @@
 //
 
 import Cocoa
+import Combine
 
 /// Wrapper class around Nightfall's `NSStatusItem` instance.
 final class NightfallStatusItemController {
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 	private let contextMenu = NSMenu()
+	
+	private var subscription: Cancellable? // Should be retained for the lifetime of this object
 	
 	/// Alias for `statusItem.button`
 	var statusButton: NSStatusBarButton? {
@@ -18,6 +21,20 @@ final class NightfallStatusItemController {
 	}
 	
 	init() {
+		statusItem.autosaveName = "NightfallStatusItem"
+		statusItem.behavior = .removalAllowed
+		
+		// KVO for isVisible is firing unpredictably, so use Combine to rectify
+		// See https://stackoverflow.com/q/69834210
+		self.subscription = statusItem.publisher(for: \.isVisible)
+			.removeDuplicates() // Workaround for the duplicate issue
+			.dropFirst() // Prevent from firing at app startup
+			.sink { isVisible in
+				if !isVisible {
+					self.showHiddenIconDisclaimer()
+				}
+			}
+		
 		// Make the context menu
 		contextMenu.items = [
 			NSMenuItem(title: "Toggle Dark Mode", action: #selector(handleToggleDarkMode(_:)), target: self),
@@ -46,10 +63,18 @@ final class NightfallStatusItemController {
 		defer { statusItem.menu = nil }
 		
 		let showUpdate = UserDefaults.standard.checkForUpdates &&
-			(AppUpdateChecker.shared.isOutdated ?? false)
+		(AppUpdateChecker.shared.isOutdated ?? false)
 		contextMenu.item(withTitle: "Update...")?.isHidden = !showUpdate
 		
 		statusButton?.performClick(sender)
+	}
+	
+	private func showHiddenIconDisclaimer() {
+		let alert = NSAlert()
+		alert.messageText = "Nightfall Has Been Hidden"
+		alert.informativeText = "Nightfall will continue to run in the background. To show it again, re-open the app."
+		
+		alert.runModal()
 	}
 	
 	// MARK: Handler functions
