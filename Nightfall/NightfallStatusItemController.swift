@@ -39,9 +39,9 @@ final class NightfallStatusItemController {
 		contextMenu.items = [
 			NSMenuItem(title: "Toggle Dark Mode", action: #selector(handleToggleDarkMode(_:)), target: self),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "Preferences...", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
+			NSMenuItem(title: "Preferences…", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "Update...", action: #selector(handleOpenUpdateWindow(_:)), target: self),
+			NSMenuItem(title: "Update…", action: #selector(handleOpenUpdateWindow(_:)), target: self),
 			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow(_:)), target: self),
 			NSMenuItem(title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"),
 		]
@@ -64,7 +64,7 @@ final class NightfallStatusItemController {
 		
 		let showUpdate = UserDefaults.standard.checkForUpdates &&
 		(AppUpdateChecker.shared.isOutdated ?? false)
-		contextMenu.item(withTitle: "Update...")?.isHidden = !showUpdate
+		contextMenu.item(withTitle: "Update…")?.isHidden = !showUpdate
 		
 		statusButton?.performClick(sender)
 	}
