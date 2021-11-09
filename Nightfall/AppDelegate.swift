@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Combine
 import ServiceManagement
 
 @NSApplicationMain
@@ -15,6 +16,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	// Used to return focus to the last application used
 	var lastActiveApp: NSRunningApplication?
 	var shouldReturnFocus = false
+	
+	var didDeactivateAppSubscription: Cancellable?
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Register user defaults
@@ -41,11 +44,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 										  context: nil)
 		
 		// Used to track the last active application
-		let nc = NSWorkspace.shared.notificationCenter
-		let name = NSWorkspace.didDeactivateApplicationNotification
-		nc.addObserver(forName: name, object: nil, queue: nil) { notification in
-			self.lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
-		}
+		self.didDeactivateAppSubscription = NSWorkspace.shared.notificationCenter
+			.publisher(for: NSWorkspace.didDeactivateApplicationNotification, object: nil)
+			.sink { notification in
+				self.lastActiveApp = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+			}
 	}
 	
 	func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
