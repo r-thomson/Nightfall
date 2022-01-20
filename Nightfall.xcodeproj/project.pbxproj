@@ -32,6 +32,7 @@
 		AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */; };
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
 		AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */; };
+		AFE1CCE52798D63500DBC30F /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE1CCE42798D63500DBC30F /* SkyLight.framework */; };
 		AFEA8B2523F1C5430047EDD0 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,8 @@
 		AFCF6CB223B5254400C5CA70 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMenuItem.swift; sourceTree = "<group>"; };
 		AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
+		AFE1CCE42798D63500DBC30F /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
+		AFE1CCEA2798DD8100DBC30F /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE1CCE52798D63500DBC30F /* SkyLight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +130,7 @@
 				AF522510219BA23600A2A467 /* Nightfall */,
 				AFC6D03E23ECC16900540635 /* NightfallLauncher */,
 				AF52250F219BA23600A2A467 /* Products */,
+				AFE1CCE32798D63500DBC30F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +161,7 @@
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
 				AF939CD623B1472700053801 /* About.txt */,
+				AFE1CCEA2798DD8100DBC30F /* BridgingHeader.h */,
 				AF52251A219BA23800A2A467 /* Info.plist */,
 				AF52251B219BA23800A2A467 /* Nightfall.entitlements */,
 			);
@@ -209,6 +215,14 @@
 				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		AFE1CCE32798D63500DBC30F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFE1CCE42798D63500DBC30F /* SkyLight.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,7 +565,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Nightfall/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -576,7 +595,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryanthomson.Nightfall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Nightfall/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
