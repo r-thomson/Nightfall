@@ -1,4 +1,4 @@
-Copyright © 2018–2021 Ryan Thomson.
+Copyright © 2018–2022 Ryan Thomson.
 
 MIT License
 
