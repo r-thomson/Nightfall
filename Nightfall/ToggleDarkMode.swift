@@ -12,7 +12,7 @@ func toggleDarkMode() {
 	let defaults = UserDefaults.standard
 	
 	let transition: NSGlobalPreferenceTransition?
-	if defaults.useFade && PermissionUtil.checkScreenCapturePermission(canPrompt: true) {
+	if defaults.useTransition && PermissionUtil.checkScreenCapturePermission(canPrompt: true) {
 		transition = NSGlobalPreferenceTransition.transition() as! NSGlobalPreferenceTransition?
 	} else {
 		transition = nil

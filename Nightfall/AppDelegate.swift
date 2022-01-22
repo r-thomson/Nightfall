@@ -22,9 +22,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
-			UserDefaults.Keys.useFade: true,
-			UserDefaults.Keys.fadeDelay: 0.6,
-			UserDefaults.Keys.fadeDuration: 0.6,
+			UserDefaults.Keys.useTransition: true,
 			UserDefaults.Keys.startAtLogin: false,
 			UserDefaults.Keys.checkForUpdates: true
 		])
