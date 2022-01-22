@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0046BA23C026CB001A2C61 /* UserDefaults.swift */; };
-		AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */; };
 		AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E82323AA997E007FA92D /* PreferencesPopover.swift */; };
 		AF39030D23EDD6BE004F24EF /* NightfallLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFC6D03D23ECC16900540635 /* NightfallLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */; };
 		AF3F393C23F4633C0071520B /* AppUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */; };
-		AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4333E3219C597500CB6625 /* SystemAppearance.swift */; };
 		AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */; };
 		AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF522511219BA23600A2A467 /* AppDelegate.swift */; };
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
@@ -25,7 +22,6 @@
 		AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */; };
 		AF99EF77219BCE08004A252B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF99EF79219BCE08004A252B /* Main.storyboard */; };
 		AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */; };
-		AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB0294522D91E10001AB304 /* FadeOverlay.swift */; };
 		AFC6499323F4925000E321E8 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFC6499223F4925000E321E8 /* Application.xib */; };
 		AFC6D04023ECC16900540635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6D03F23ECC16900540635 /* AppDelegate.swift */; };
 		AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC736C923B01D7800D80A21 /* AboutView.swift */; };
@@ -62,11 +58,8 @@
 
 /* Begin PBXFileReference section */
 		AF0046BA23C026CB001A2C61 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGDirectDisplayID.swift; sourceTree = "<group>"; };
 		AF28E82323AA997E007FA92D /* PreferencesPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPopover.swift; sourceTree = "<group>"; };
-		AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImageOverlayWindow.swift; sourceTree = "<group>"; };
 		AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUpdateChecker.swift; sourceTree = "<group>"; };
-		AF4333E3219C597500CB6625 /* SystemAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAppearance.swift; sourceTree = "<group>"; };
 		AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		AF52250E219BA23600A2A467 /* Nightfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF522511219BA23600A2A467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +74,6 @@
 		AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUserDefault.swift; sourceTree = "<group>"; };
 		AF99EF8A219BD070004A252B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightfallStatusItemController.swift; sourceTree = "<group>"; };
-		AFB0294522D91E10001AB304 /* FadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOverlay.swift; sourceTree = "<group>"; };
 		AFC6499223F4925000E321E8 /* Application.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		AFC6D03D23ECC16900540635 /* NightfallLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightfallLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC6D03F23ECC16900540635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +111,6 @@
 		AF2582E4238339680088E4B2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AF2582E22383395E0088E4B2 /* CGDirectDisplayID.swift */,
 				AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */,
 				AF0046BA23C026CB001A2C61 /* UserDefaults.swift */,
 			);
@@ -155,7 +146,6 @@
 				AF522511219BA23600A2A467 /* AppDelegate.swift */,
 				AFA1FCA5237A026800BBBFE3 /* NightfallStatusItemController.swift */,
 				AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */,
-				AFB0294522D91E10001AB304 /* FadeOverlay.swift */,
 				AF939CD823B3FA2E00053801 /* AboutWindowController.swift */,
 				AF28E82323AA997E007FA92D /* PreferencesPopover.swift */,
 				AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */,
@@ -211,11 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				AFE1CCEB279A53FD00DBC30F /* AppearanceTheme.swift */,
-				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
 				AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */,
 				AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */,
 				AF7A00B123EE5F890062D841 /* SemanticVersion.swift */,
-				AF4333E3219C597500CB6625 /* SystemAppearance.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -383,16 +371,12 @@
 				AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */,
 				AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */,
 				AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */,
-				AFB0294622D91E10001AB304 /* FadeOverlay.swift in Sources */,
 				AF7A00B223EE5F890062D841 /* SemanticVersion.swift in Sources */,
 				AF3F393C23F4633C0071520B /* AppUpdateChecker.swift in Sources */,
-				AF4333E4219C597500CB6625 /* SystemAppearance.swift in Sources */,
 				AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */,
-				AF2582E32383395E0088E4B2 /* CGDirectDisplayID.swift in Sources */,
 				AF559C7323EFA3400010EAE1 /* GithubAPIModels.swift in Sources */,
 				AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */,
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
-				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */,
 				AFE1CCEC279A53FD00DBC30F /* AppearanceTheme.swift in Sources */,
 				AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */,

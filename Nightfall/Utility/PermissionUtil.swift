@@ -8,24 +8,6 @@
 import Cocoa
 
 enum PermissionUtil {
-	static func checkSystemEventsPermission(canPrompt: Bool) -> Bool {
-		let bundleID = "com.apple.systemevents"
-		
-		// First, make sure the System Events application is running...
-		
-		if NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).isEmpty {
-			NSWorkspace.shared.launchApplication(withBundleIdentifier: bundleID, options: .withoutActivation,
-				additionalEventParamDescriptor: nil, launchIdentifier: nil)
-		}
-		
-		// ...then check the permission
-		
-		let target = NSAppleEventDescriptor(bundleIdentifier: bundleID)
-		let status = AEDeterminePermissionToAutomateTarget(target.aeDesc, typeWildCard, typeWildCard, canPrompt)
-		
-		return status == noErr
-	}
-	
 	static func checkScreenCapturePermission(canPrompt: Bool) -> Bool {
 		if canPrompt {
 			let stream = CGDisplayStream(display: CGMainDisplayID(),
