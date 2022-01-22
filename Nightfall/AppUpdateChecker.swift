@@ -21,12 +21,14 @@ final class AppUpdateChecker {
 	
 	private(set) var isOutdated: Bool?
 	
-	private static let schedulerIdentifier = Bundle.main.bundleIdentifier! + ".updatecheck"
-	private let updateScheduler = NSBackgroundActivityScheduler(identifier: schedulerIdentifier)
+	private let updateScheduler: NSBackgroundActivityScheduler
+	private static let schedulerIdentifier = "\(Bundle.main.bundleIdentifier!).updatecheck"
+	private static let schedulerIntervalSecs = 60 * 60 * 6 // 6 hours in seconds
 	
 	init() {
+		updateScheduler = NSBackgroundActivityScheduler(identifier: AppUpdateChecker.schedulerIdentifier)
 		updateScheduler.repeats = true
-		updateScheduler.interval = 60 * 60 * 16 // 16 hours in seconds
+		updateScheduler.interval = TimeInterval(AppUpdateChecker.schedulerIntervalSecs)
 	}
 	
 	/// Checks if there is an update available by retrieving the latest release version from Nightfall's
