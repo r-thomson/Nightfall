@@ -33,6 +33,7 @@
 		AFCF6CBD23B920AB00C5CA70 /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */; };
 		AFDE642323C920DA00BBEB7A /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */; };
 		AFE1CCE52798D63500DBC30F /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE1CCE42798D63500DBC30F /* SkyLight.framework */; };
+		AFE1CCEC279A53FD00DBC30F /* AppearanceTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1CCEB279A53FD00DBC30F /* AppearanceTheme.swift */; };
 		AFEA8B2523F1C5430047EDD0 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
 		AFE1CCE42798D63500DBC30F /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		AFE1CCEA2798DD8100DBC30F /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		AFE1CCEB279A53FD00DBC30F /* AppearanceTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTheme.swift; sourceTree = "<group>"; };
 		AFEA8B2423F1C5430047EDD0 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +210,7 @@
 		AFCF6CB123B523FA00C5CA70 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				AFE1CCEB279A53FD00DBC30F /* AppearanceTheme.swift */,
 				AF3B5798238097B6002BDD23 /* CGImageOverlayWindow.swift */,
 				AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */,
 				AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */,
@@ -391,6 +394,7 @@
 				AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */,
 				AF3B5799238097B6002BDD23 /* CGImageOverlayWindow.swift in Sources */,
 				AF4784A62385CEC8002A6E2D /* ServicesProvider.swift in Sources */,
+				AFE1CCEC279A53FD00DBC30F /* AppearanceTheme.swift in Sources */,
 				AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */,
 				AFEA8B2523F1C5430047EDD0 /* GithubAPI.swift in Sources */,
 				AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */,
