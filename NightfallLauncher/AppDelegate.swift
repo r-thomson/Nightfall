@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			NSApp.terminate(self)
 		}
 		
-		let bundleID = "com.ryanthomson.Nightfall"
+		let bundleID = "net.ryanthomson.Nightfall"
 		
 		// Check to see if the application is already running
 		guard NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).isEmpty

@@ -74,7 +74,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			keyPath == UserDefaults.Keys.startAtLogin {
 			
 			if let new = change?[.newKey] as? Bool {
-				SMLoginItemSetEnabled("com.ryanthomson.NightfallLauncher" as CFString, new)
+				SMLoginItemSetEnabled("net.ryanthomson.NightfallLauncher" as CFString, new)
 			}
 		}
 	}
