@@ -4,11 +4,9 @@
 <dict>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
-	<key>com.apple.security.automation.apple-events</key>
-	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
-	<key>com.apple.security.temporary-exception.apple-events</key>
-	<string>com.apple.systemevents</string>
+	<key>com.apple.security.temporary-exception.shared-preference.read-write</key>
+	<string>kCFPreferencesAnyApplication</string>
 </dict>
 </plist>
