@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  NightfallLauncher
-//
-//  Copyright © 2020 Ryan Thomson. All rights reserved.
-//
-
 import Cocoa
 
 @NSApplicationMain

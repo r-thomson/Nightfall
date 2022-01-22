@@ -1,10 +1,3 @@
-//
-//  GithubAPI.swift
-//  Nightfall
-//
-//  Copyright © 2020 Ryan Thomson. All rights reserved.
-//
-
 import Foundation
 
 enum GithubAPI {

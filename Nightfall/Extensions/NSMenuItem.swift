@@ -1,10 +1,3 @@
-//
-//  NSMenuItem.swift
-//  Nightfall
-//
-//  Copyright © 2019 Ryan Thomson. All rights reserved.
-//
-
 import Cocoa
 
 extension NSMenuItem {

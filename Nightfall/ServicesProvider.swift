@@ -1,10 +1,3 @@
-//
-//  ServicesProvider.swift
-//  Nightfall
-//
-//  Copyright © 2019 Ryan Thomson. All rights reserved.
-//
-
 import Cocoa
 
 /// Container object for all services provided by this app.

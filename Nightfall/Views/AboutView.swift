@@ -1,10 +1,3 @@
-//
-//  AboutView.swift
-//  Nightfall
-//
-//  Copyright © 2019 Ryan Thomson. All rights reserved.
-//
-
 import SwiftUI
 
 struct AboutView: View {

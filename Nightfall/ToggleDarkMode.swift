@@ -1,10 +1,3 @@
-//
-//  ToggleDarkMode.swift
-//  Nightfall
-//
-//  Copyright © 2020 Ryan Thomson. All rights reserved.
-//
-
 import Cocoa
 
 /// Toggles the system between light and dark modes, using a transition animation if available.

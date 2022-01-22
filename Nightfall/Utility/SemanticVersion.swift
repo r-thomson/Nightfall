@@ -1,10 +1,3 @@
-//
-//  SemanticVersion.swift
-//  Nightfall
-//
-//  Copyright © 2020 Ryan Thomson. All rights reserved.
-//
-
 import Foundation
 
 /// A semantic version number (*major.minor.patch*). Supports comparison operations.

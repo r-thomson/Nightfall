@@ -1,10 +1,3 @@
-//
-//  BridgingHeader.h
-//  Nightfall
-//
-//  Copyright © 2022 Ryan Thomson. All rights reserved.
-//
-
 #import <objc/NSObject.h>
 
 BOOL SLSGetAppearanceThemeLegacy();

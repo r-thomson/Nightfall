@@ -1,10 +1,3 @@
-//
-//  AppearanceTheme.swift
-//  Nightfall
-//
-//  Copyright © 2022 Ryan Thomson. All rights reserved.
-//
-
 /// Returns the current system appearance using the private SkyLight framework
 func getAppearanceTheme() -> AppearanceTheme {
 	return SLSGetAppearanceThemeLegacy() ? .dark : .light

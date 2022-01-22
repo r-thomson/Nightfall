@@ -1,10 +1,3 @@
-//
-//  ObservableUserDefault.swift
-//  Nightfall
-//
-//  Copyright © 2019 Ryan Thomson. All rights reserved.
-//
-
 import Foundation
 
 /// Provides a bindable interface for `UserDefaults` that responds to updates. Can be used with the

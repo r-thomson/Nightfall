@@ -1,10 +1,3 @@
-//
-//  PermissionUtil.swift
-//  Nightfall
-//
-//  Copyright © 2020 Ryan Thomson. All rights reserved.
-//
-
 import Cocoa
 
 enum PermissionUtil {
