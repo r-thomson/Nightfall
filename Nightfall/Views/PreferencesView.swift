@@ -1,6 +1,13 @@
 import SwiftUI
 
 struct PreferencesView: View {
+	/// Opens the Screen Recording privacy settings in System Preferences
+	private func openSystemScreenCapturePrefs() {
+		if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture") {
+			NSWorkspace.shared.open(url)
+		}
+	}
+	
 	/// Opens the Keyboard pane in System Preferences
 	private func openSystemKeyboardPrefs() {
 		let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Keyboard.prefPane")
@@ -20,16 +27,24 @@ struct PreferencesView: View {
 				VStack(alignment: .leading, spacing: 2) {
 					Toggle("Animated transition", isOn: $useTransition.value)
 					
-					Text("Requires screen recording permission")
+					Button("Requires screen recording permission", action: openSystemScreenCapturePrefs)
+						.buttonStyle(BorderlessButtonStyle())
 						.font(.system(size: 9))
 						.foregroundColor(.secondary)
+						.onHover { (inside) in
+							if (inside) {
+								NSCursor.pointingHand.push()
+							} else {
+								NSCursor.pointingHand.pop()
+							}
+						}
 						.padding(.leading, 18)
+					
 				}
 				
 				Toggle("Start Nightfall at login", isOn: $startAtLogin.value)
 				
 				Toggle("Check for new versions", isOn: $checkForUpdates.value)
-				
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
 			
