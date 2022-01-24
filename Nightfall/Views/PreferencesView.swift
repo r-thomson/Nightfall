@@ -31,13 +31,7 @@ struct PreferencesView: View {
 						.buttonStyle(BorderlessButtonStyle())
 						.font(.system(size: 9))
 						.foregroundColor(.secondary)
-						.onHover { (inside) in
-							if (inside) {
-								NSCursor.pointingHand.push()
-							} else {
-								NSCursor.pointingHand.pop()
-							}
-						}
+						.cursor(.pointingHand)
 						.padding(.leading, 18)
 					
 				}

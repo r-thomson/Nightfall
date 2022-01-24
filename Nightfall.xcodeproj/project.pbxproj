@@ -16,6 +16,7 @@
 		AF522516219BA23800A2A467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF522515219BA23800A2A467 /* Assets.xcassets */; };
 		AF559C7323EFA3400010EAE1 /* GithubAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF559C7223EFA3400010EAE1 /* GithubAPIModels.swift */; };
 		AF7A00B223EE5F890062D841 /* SemanticVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7A00B123EE5F890062D841 /* SemanticVersion.swift */; };
+		AF7A0686279E48290031EC45 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7A0685279E48290031EC45 /* View.swift */; };
 		AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */; };
 		AF939CD723B1472700053801 /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = AF939CD623B1472700053801 /* About.txt */; };
 		AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CD823B3FA2E00053801 /* AboutWindowController.swift */; };
@@ -68,6 +69,7 @@
 		AF52251B219BA23800A2A467 /* Nightfall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nightfall.entitlements; sourceTree = "<group>"; };
 		AF559C7223EFA3400010EAE1 /* GithubAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIModels.swift; sourceTree = "<group>"; };
 		AF7A00B123EE5F890062D841 /* SemanticVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticVersion.swift; sourceTree = "<group>"; };
+		AF7A0685279E48290031EC45 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleDarkMode.swift; sourceTree = "<group>"; };
 		AF939CD623B1472700053801 /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
 		AF939CD823B3FA2E00053801 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */,
 				AF0046BA23C026CB001A2C61 /* UserDefaults.swift */,
+				AF7A0685279E48290031EC45 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			files = (
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */,
+				AF7A0686279E48290031EC45 /* View.swift in Sources */,
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
 				AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */,
 				AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */,
