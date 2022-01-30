@@ -21,19 +21,30 @@ struct PreferencesView: View {
 	@ObservedObject private var checkForUpdates =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.checkForUpdates)
 	
+	@State var hasScreenCapturePermission: Bool? = nil
+	
 	var body: some View {
 		VStack {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 2) {
 					Toggle("Animated transition", isOn: $useTransition.value)
 					
-					Button("Requires screen recording permission", action: openSystemScreenCapturePrefs)
-						.buttonStyle(BorderlessButtonStyle())
-						.font(.system(size: 9))
-						.foregroundColor(.secondary)
-						.cursor(.pointingHand)
-						.padding(.leading, 18)
-					
+					Button(action: openSystemScreenCapturePrefs) {
+						HStack(spacing: 2.5) {
+							if (useTransition.value && hasScreenCapturePermission == false) {
+								Image(nsImage: NSImage(named: NSImage.cautionName)!)
+									.resizable()
+									.aspectRatio(contentMode: .fit)
+									.frame(height: 10)
+							}
+							
+							Text("Requires screen recording permission")
+								.font(.system(size: 9))
+						}
+					}
+					.buttonStyle(BorderlessButtonStyle())
+					.cursor(.pointingHand)
+					.padding(.leading, 18)
 				}
 				
 				Toggle("Start Nightfall at login", isOn: $startAtLogin.value)
@@ -57,6 +68,10 @@ struct PreferencesView: View {
 		}
 		.padding()
 		.frame(width: 230)
+		.onAppear {
+			// Check every time the preferences popup is opened
+			hasScreenCapturePermission = PermissionUtil.checkScreenCapturePermission(canPrompt: false)
+		}
 	}
 }
 
