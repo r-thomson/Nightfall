@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		21B9CC3327A9F29400BC4BE6 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 21B9CC3227A9F29400BC4BE6 /* Solar */; };
-		21B9CC3527A9F49B00BC4BE6 /* ClockWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */; };
+		21B9CC3527A9F49B00BC4BE6 /* AutoTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B9CC3427A9F49B00BC4BE6 /* AutoTransitioner.swift */; };
+		21DE863627AAD95500D45FF5 /* LocationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DE863527AAD95500D45FF5 /* LocationUtility.swift */; };
 		AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0046BA23C026CB001A2C61 /* UserDefaults.swift */; };
 		AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E82323AA997E007FA92D /* PreferencesPopover.swift */; };
 		AF39030D23EDD6BE004F24EF /* NightfallLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFC6D03D23ECC16900540635 /* NightfallLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -60,7 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWatcher.swift; sourceTree = "<group>"; };
+		21B9CC3427A9F49B00BC4BE6 /* AutoTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTransitioner.swift; sourceTree = "<group>"; };
+		21DE863527AAD95500D45FF5 /* LocationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtility.swift; sourceTree = "<group>"; };
 		AF0046BA23C026CB001A2C61 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		AF28E82323AA997E007FA92D /* PreferencesPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPopover.swift; sourceTree = "<group>"; };
 		AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUpdateChecker.swift; sourceTree = "<group>"; };
@@ -157,7 +159,7 @@
 				AF28E82323AA997E007FA92D /* PreferencesPopover.swift */,
 				AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */,
 				AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */,
-				21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */,
+				21B9CC3427A9F49B00BC4BE6 /* AutoTransitioner.swift */,
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
 				AF939CD623B1472700053801 /* About.txt */,
@@ -212,6 +214,7 @@
 				AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */,
 				AFDE642223C920DA00BBEB7A /* PermissionUtil.swift */,
 				AF7A00B123EE5F890062D841 /* SemanticVersion.swift */,
+				21DE863527AAD95500D45FF5 /* LocationUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -379,11 +382,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B9CC3527A9F49B00BC4BE6 /* ClockWatcher.swift in Sources */,
+				21B9CC3527A9F49B00BC4BE6 /* AutoTransitioner.swift in Sources */,
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */,
 				AF7A0686279E48290031EC45 /* View.swift in Sources */,
 				AF522512219BA23600A2A467 /* AppDelegate.swift in Sources */,
+				21DE863627AAD95500D45FF5 /* LocationUtility.swift in Sources */,
 				AFC736CA23B01D7800D80A21 /* AboutView.swift in Sources */,
 				AFCF6CB323B5254400C5CA70 /* PreferencesView.swift in Sources */,
 				AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */,

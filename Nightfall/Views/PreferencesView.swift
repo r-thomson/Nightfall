@@ -1,6 +1,14 @@
 import SwiftUI
 
 struct PreferencesView: View {
+	
+	let dateFormatter: DateFormatter
+	init() {
+		dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .none
+		dateFormatter.timeStyle = .short
+	}
+	
 	/// Opens the Screen Recording privacy settings in System Preferences
 	private func openSystemScreenCapturePrefs() {
 		if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture") {
@@ -14,14 +22,15 @@ struct PreferencesView: View {
 		NSWorkspace.shared.open(url)
 	}
 	
-	@ObservedObject private var useTransition =
-		ObservableUserDefault<Bool>(UserDefaults.Keys.useTransition)
+	@ObservedObject private var useTransition = ObservableUserDefault<Bool>(UserDefaults.Keys.useTransition)
 	@ObservedObject private var startAtLogin =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.startAtLogin)
 	@ObservedObject private var checkForUpdates =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.checkForUpdates)
 	@ObservedObject private var autoTransition =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.autoTransition)
+	
+	@ObservedObject private var transition = AutoTransitioner.shared.nextTransition
 	
 	@State var hasScreenCapturePermission: Bool? = nil
 	
@@ -54,6 +63,20 @@ struct PreferencesView: View {
 				Toggle("Check for new versions", isOn: $checkForUpdates.value)
 				
 				Toggle("Auto Sunrise/Sunset", isOn: $autoTransition.value)
+				HStack {
+					if autoTransition.value {
+						if let theme = transition.theme, let date = transition.date {
+							HStack{
+								Text("Next transition: \(theme.toString()) at \(self.dateFormatter.string(from:date))")
+							}
+						}
+					} else if LocationUtility.shared.isAuthorized() != .authorized {
+						Text("Requires location services permission")
+					}
+				}
+				.font(.system(size: 9))
+				.padding(.leading, 18)
+				.foregroundColor(.secondary)
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
 			

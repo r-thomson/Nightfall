@@ -12,6 +12,15 @@ func setAppearanceTheme(to theme: AppearanceTheme, notify: Bool = false) {
 enum AppearanceTheme {
 	case light // false
 	case dark // true
+	
+	func toString() -> String {
+		switch self {
+		case .light:
+			return "Light"
+		case .dark:
+			return "Dark"
+		}
+	}
 }
 
 extension AppearanceTheme {

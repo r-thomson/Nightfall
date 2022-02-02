@@ -1,10 +1,14 @@
 import Cocoa
 import Combine
+import CoreLocation
 import ServiceManagement
+import os.log
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	let statusItemController = NightfallStatusItemController()
+	
+	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "scheduler")
 	
 	// Used to return focus to the last application used
 	var lastActiveApp: NSRunningApplication?
@@ -26,13 +30,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		// Begin checking for updates periodically
 		AppUpdateChecker.shared.startBackgroundChecking()
-		ClockWatcher.shared.startWatchingClock()
 		
 		// Begins observing changes to the "StartAtLogin" default. The observer
 		// function then reads the default to set/unset the app as a login item.
 		// Because .initial is specified, it will also be set at app startup.
 		UserDefaults.standard.addObserver(self,
 										  forKeyPath: UserDefaults.Keys.startAtLogin,
+										  options: [.initial, .new],
+										  context: nil)
+		
+		// Watch for the user to enable/disable auto transitions, passing in the
+		// current value at start up
+		UserDefaults.standard.addObserver(self,
+										  forKeyPath: UserDefaults.Keys.autoTransition,
 										  options: [.initial, .new],
 										  context: nil)
 		
@@ -65,16 +75,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?,
 		change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 		
-		if object as? UserDefaults === UserDefaults.standard &&
-			keyPath == UserDefaults.Keys.startAtLogin {
-			
+		if object as? UserDefaults === UserDefaults.standard && keyPath == UserDefaults.Keys.startAtLogin {
 			if let new = change?[.newKey] as? Bool {
 				SMLoginItemSetEnabled("net.ryanthomson.NightfallLauncher" as CFString, new)
+			}
+		}
+		
+		if object as? UserDefaults === UserDefaults.standard && keyPath == UserDefaults.Keys.autoTransition {
+			if let new = change?[.newKey] as? Bool {
+				if new {
+					LocationUtility.shared.requestAuthorization()
+					AutoTransitioner.shared.activate()
+				} else {
+					AutoTransitioner.shared.deactivate()
+				}
 			}
 		}
 	}
 	
 	deinit {
 		UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Keys.startAtLogin)
+		UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Keys.autoTransition)
 	}
 }
