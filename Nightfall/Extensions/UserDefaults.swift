@@ -5,6 +5,7 @@ extension UserDefaults {
 		static let useTransition = "UseTransition"
 		static let startAtLogin = "StartAtLogin"
 		static let checkForUpdates = "CheckForUpdates"
+        static let autoTransition = "AutoTransition"
 	}
 	
 	var useTransition: Bool {
@@ -16,9 +17,14 @@ extension UserDefaults {
 		get { self.bool(forKey: Keys.startAtLogin) }
 		set { self.set(newValue, forKey: Keys.startAtLogin) }
 	}
-	
-	var checkForUpdates: Bool {
-		get { self.bool(forKey: Keys.checkForUpdates) }
-		set { self.set(newValue, forKey: Keys.checkForUpdates) }
-	}
+    
+    var checkForUpdates: Bool {
+        get { self.bool(forKey: Keys.checkForUpdates) }
+        set { self.set(newValue, forKey: Keys.checkForUpdates) }
+    }
+    
+    var autoTransition: Bool {
+        get { self.bool(forKey: Keys.autoTransition) }
+        set { self.set(newValue, forKey: Keys.autoTransition) }
+    }
 }

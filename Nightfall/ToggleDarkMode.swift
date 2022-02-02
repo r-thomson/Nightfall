@@ -16,3 +16,17 @@ func toggleDarkMode() {
 	
 	transition?.postChangeNotification(0) {}
 }
+
+func setToDarkMode() {
+    
+    if getAppearanceTheme() == .light {
+        toggleDarkMode()
+    }
+}
+
+func setToLightMode() {
+    
+    if getAppearanceTheme() == .dark {
+        toggleDarkMode()
+    }
+}

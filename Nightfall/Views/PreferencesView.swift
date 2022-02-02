@@ -20,6 +20,8 @@ struct PreferencesView: View {
 		ObservableUserDefault<Bool>(UserDefaults.Keys.startAtLogin)
 	@ObservedObject private var checkForUpdates =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.checkForUpdates)
+    @ObservedObject private var autoTransition =
+        ObservableUserDefault<Bool>(UserDefaults.Keys.autoTransition)
 	
 	@State var hasScreenCapturePermission: Bool? = nil
 	
@@ -48,8 +50,10 @@ struct PreferencesView: View {
 				}
 				
 				Toggle("Start Nightfall at login", isOn: $startAtLogin.value)
-				
-				Toggle("Check for new versions", isOn: $checkForUpdates.value)
+                
+                Toggle("Check for new versions", isOn: $checkForUpdates.value)
+                
+                Toggle("Auto Sunrise/Sunset", isOn: $autoTransition.value)
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
 			

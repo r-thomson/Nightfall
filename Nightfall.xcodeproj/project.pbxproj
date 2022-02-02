@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21B9CC3327A9F29400BC4BE6 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = 21B9CC3227A9F29400BC4BE6 /* Solar */; };
+		21B9CC3527A9F49B00BC4BE6 /* ClockWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */; };
 		AF0046BB23C026CB001A2C61 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0046BA23C026CB001A2C61 /* UserDefaults.swift */; };
 		AF28E82423AA997E007FA92D /* PreferencesPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E82323AA997E007FA92D /* PreferencesPopover.swift */; };
 		AF39030D23EDD6BE004F24EF /* NightfallLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AFC6D03D23ECC16900540635 /* NightfallLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWatcher.swift; sourceTree = "<group>"; };
 		AF0046BA23C026CB001A2C61 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		AF28E82323AA997E007FA92D /* PreferencesPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPopover.swift; sourceTree = "<group>"; };
 		AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUpdateChecker.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B9CC3327A9F29400BC4BE6 /* Solar in Frameworks */,
 				AFE1CCE52798D63500DBC30F /* SkyLight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +157,7 @@
 				AF28E82323AA997E007FA92D /* PreferencesPopover.swift */,
 				AF3F393B23F4633C0071520B /* AppUpdateChecker.swift */,
 				AF4784A52385CEC8002A6E2D /* ServicesProvider.swift */,
+				21B9CC3427A9F49B00BC4BE6 /* ClockWatcher.swift */,
 				AF99EF79219BCE08004A252B /* Main.storyboard */,
 				AF522515219BA23800A2A467 /* Assets.xcassets */,
 				AF939CD623B1472700053801 /* About.txt */,
@@ -238,6 +243,9 @@
 				AF39030F23EDD749004F24EF /* PBXTargetDependency */,
 			);
 			name = Nightfall;
+			packageProductDependencies = (
+				21B9CC3227A9F29400BC4BE6 /* Solar */,
+			);
 			productName = Nightfall;
 			productReference = AF52250E219BA23600A2A467 /* Nightfall.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +301,9 @@
 				Base,
 			);
 			mainGroup = AF522505219BA23600A2A467;
+			packageReferences = (
+				21B9CC3127A9F29400BC4BE6 /* XCRemoteSwiftPackageReference "Solar" */,
+			);
 			productRefGroup = AF52250F219BA23600A2A467 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -368,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B9CC3527A9F49B00BC4BE6 /* ClockWatcher.swift in Sources */,
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */,
 				AF7A0686279E48290031EC45 /* View.swift in Sources */,
@@ -546,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "-1";
-				DEVELOPMENT_TEAM = 48NA7APC3F;
+				DEVELOPMENT_TEAM = C8L677C7HM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Nightfall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,7 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "-1";
-				DEVELOPMENT_TEAM = 48NA7APC3F;
+				DEVELOPMENT_TEAM = C8L677C7HM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = NightfallLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -628,7 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "-1";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C8L677C7HM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = NightfallLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -675,6 +687,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21B9CC3127A9F29400BC4BE6 /* XCRemoteSwiftPackageReference "Solar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ceeK/Solar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21B9CC3227A9F29400BC4BE6 /* Solar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21B9CC3127A9F29400BC4BE6 /* XCRemoteSwiftPackageReference "Solar" */;
+			productName = Solar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF522506219BA23600A2A467 /* Project object */;
 }
