@@ -18,7 +18,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			UserDefaults.Keys.useTransition: true,
 			UserDefaults.Keys.startAtLogin: false,
 			UserDefaults.Keys.checkForUpdates: true,
-            UserDefaults.Keys.autoTransition: false
+			UserDefaults.Keys.autoTransition: false
 		])
 		
 		// Register the services provider
@@ -26,7 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		// Begin checking for updates periodically
 		AppUpdateChecker.shared.startBackgroundChecking()
-        ClockWatcher.shared.startWatchingClock()
+		ClockWatcher.shared.startWatchingClock()
 		
 		// Begins observing changes to the "StartAtLogin" default. The observer
 		// function then reads the default to set/unset the app as a login item.

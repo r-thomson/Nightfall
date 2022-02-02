@@ -18,15 +18,15 @@ func toggleDarkMode() {
 }
 
 func setToDarkMode() {
-    
-    if getAppearanceTheme() == .light {
-        toggleDarkMode()
-    }
+	
+	if getAppearanceTheme() == .light {
+		toggleDarkMode()
+	}
 }
 
 func setToLightMode() {
-    
-    if getAppearanceTheme() == .dark {
-        toggleDarkMode()
-    }
+	
+	if getAppearanceTheme() == .dark {
+		toggleDarkMode()
+	}
 }
