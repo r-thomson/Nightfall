@@ -75,24 +75,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?,
 		change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 		
-		if object as? UserDefaults === UserDefaults.standard && keyPath == UserDefaults.Keys.startAtLogin {
-			if let new = change?[.newKey] as? Bool {
-				SMLoginItemSetEnabled("net.ryanthomson.NightfallLauncher" as CFString, new)
+		if object as? UserDefaults === UserDefaults.standard {
+			
+			// watch start at login
+			if keyPath == UserDefaults.Keys.startAtLogin {
+				if let new = change?[.newKey] as? Bool {
+					SMLoginItemSetEnabled("net.ryanthomson.NightfallLauncher" as CFString, new)
+				}
 			}
-		}
-		
-		if object as? UserDefaults === UserDefaults.standard && keyPath == UserDefaults.Keys.autoTransition {
-			if let new = change?[.newKey] as? Bool {
-				if new {
-					LocationUtility.shared.requestAuthorization()
-					AutoTransitioner.shared.activate()
-				} else {
-					AutoTransitioner.shared.deactivate()
+			
+			// watch auto transition
+			if keyPath == UserDefaults.Keys.autoTransition {
+				if let new = change?[.newKey] as? Bool {
+					if new {
+						print("asked for permission from pref change")
+						LocationUtility.shared.requestAuthorization()
+						AutoTransitioner.shared.activate()
+					} else {
+						AutoTransitioner.shared.deactivate()
+					}
 				}
 			}
 		}
 	}
-	
+		
 	deinit {
 		UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Keys.startAtLogin)
 		UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Keys.autoTransition)

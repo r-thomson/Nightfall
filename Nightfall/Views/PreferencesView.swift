@@ -22,7 +22,8 @@ struct PreferencesView: View {
 		NSWorkspace.shared.open(url)
 	}
 	
-	@ObservedObject private var useTransition = ObservableUserDefault<Bool>(UserDefaults.Keys.useTransition)
+	@ObservedObject private var useTransition =
+		ObservableUserDefault<Bool>(UserDefaults.Keys.useTransition)
 	@ObservedObject private var startAtLogin =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.startAtLogin)
 	@ObservedObject private var checkForUpdates =
@@ -30,7 +31,8 @@ struct PreferencesView: View {
 	@ObservedObject private var autoTransition =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.autoTransition)
 	
-	@ObservedObject private var transition = AutoTransitioner.shared.nextTransition
+	@ObservedObject private var transition
+		= AutoTransitioner.shared.nextTransition
 	
 	@State var hasScreenCapturePermission: Bool? = nil
 	

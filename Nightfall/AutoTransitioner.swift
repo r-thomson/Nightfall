@@ -77,7 +77,7 @@ final class AutoTransitioner {
 			os_log("can't get next transition; has no location", log: log)
 			return nil
 		}
-		guard let solar = Solar(for: date, coordinate: loc) else {
+		guard let solar = Solar(for: date, coordinate: loc.coordinate) else {
 			os_log("can't get next transition; has no solar", log: log)
 			return nil
 		}
@@ -110,10 +110,15 @@ final class AutoTransitioner {
 		let until = date.timeIntervalSinceNow;
 		guard until > 0 else { return } // don't schedule for the past
 		
+		print("until = \(until)")
+		print("now + until = \(Date() + until)")
+		
 		transitionScheduler.repeats = false
 		transitionScheduler.interval = until
 		transitionScheduler.tolerance = TimeInterval( 60 * 3 ) // three minute tolerance
+		transitionScheduler.qualityOfService = .userInitiated
 		transitionScheduler.schedule() { completion in
+			os_log("running transition %{public}@ that was scheduled for TIME %{public}@: currently TIME %{public}@", log: self.log, String(describing: theme), String(describing: date), String(describing: Date()))
 			switch theme {
 			case .light:
 				Nightfall.setToLightMode()
@@ -126,21 +131,21 @@ final class AutoTransitioner {
 			self.determineNextTransition()
 		}
 		
-		os_log("scheduled transition to %@ at %@", log: log, String(describing: theme), String(describing: date))
+		os_log("scheduled transition to %{public}@ at %{public}@", log: log, String(describing: theme), String(describing: date))
 	}
 }
 
 extension AutoTransitioner: LocationObserver {
 	func authorizationDidChange(authorization: LocationAuthorization) {
-		print("authorization changed to \(authorization), determining next transition")
+		os_log("autotransitioner: authorization changed to %{public}@, determining next transition", log: log, String(describing: authorization))
 		transitionScheduler.invalidate()
 		DispatchQueue.main.async {
 			self.determineNextTransition()
 		}
 	}
 	
-	func locationDidChange(location: CLLocationCoordinate2D?) {
-		print("location changed to \(String(describing: location)), determining next transition")
+	func locationDidChange(location: CLLocation?) {
+		os_log("autotransitioner: location changed to %{public}@, determining next transition", log: log, String(describing: location))
 		transitionScheduler.invalidate()
 		DispatchQueue.main.async {
 			self.determineNextTransition()

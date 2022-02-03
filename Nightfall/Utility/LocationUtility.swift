@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 
+import os.log;
+
 enum LocationAuthorization {
 	case authorized
 	case unset
@@ -17,14 +19,24 @@ enum LocationAuthorization {
 
 protocol LocationObserver {
 	func authorizationDidChange(authorization: LocationAuthorization);
-	func locationDidChange(location: CLLocationCoordinate2D?);
+	func locationDidChange(location: CLLocation?);
 }
 
 class LocationUtility: NSObject {
 	
 	static let shared = LocationUtility()
-	var location: CLLocationCoordinate2D? = nil {
-		didSet {
+	var location: CLLocation? = nil {
+		didSet(oldLocation) {
+			// if no change, don't alert
+			if oldLocation == location { return }
+			
+			// if distance change isn't big enough, don't change
+			if let new = location, let old = oldLocation, new.distance(from: old) < 25000 {
+				location = oldLocation
+				return
+			}
+			
+			// if meaningfully changed, alert
 			for (_, o) in observers {
 				o.locationDidChange(location: location)
 			}
@@ -40,6 +52,8 @@ class LocationUtility: NSObject {
 			}
 		}
 	}
+	
+	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "location")
 	
 	override init () {
 		
@@ -64,7 +78,8 @@ class LocationUtility: NSObject {
 				authorized = .needUserAction
 			}
 		}
-		print("initialized location utility with \(authorized)")
+		
+		os_log("initialized location utility with %{public}@", log: log, String(describing: authorized))
 	}
 	
 	func registerObserver(key: String, observer: LocationObserver) {
@@ -81,11 +96,9 @@ class LocationUtility: NSObject {
 	}
 	
 	func requestAuthorization() {
-		print("location authorization requested: current = \(authorized)")
+		os_log("location authorization requested: current = %{public}@", log: log, String(describing: authorized))
 		if authorized == .unset {
-			print("asking for permission: before = \(authorized)")
 			self.locationManager.requestWhenInUseAuthorization()
-			print("asked for permission: after = \(authorized)")
 		}
 	}
 }
@@ -102,11 +115,11 @@ extension LocationUtility : CLLocationManagerDelegate {
 				authorized = .needUserAction
 			}
 		}
-		print("location utility updated authorization status to \(authorized)")
+		
+		os_log("location utility updated authorization status to %{public}@", log: log, String(describing: authorized))
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		guard let loc = manager.location?.coordinate else { return }
-		self.location = loc
+		self.location = locations.last
 	}
 }
