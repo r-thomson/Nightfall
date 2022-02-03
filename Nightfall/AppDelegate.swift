@@ -90,9 +90,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 					if new {
 						print("asked for permission from pref change")
 						LocationUtility.shared.requestAuthorization()
-						AutoTransitioner.shared.activate()
+						TransitionScheduler.shared.activate()
 					} else {
-						AutoTransitioner.shared.deactivate()
+						TransitionScheduler.shared.deactivate()
 					}
 				}
 			}

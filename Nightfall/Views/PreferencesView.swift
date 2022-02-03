@@ -32,7 +32,7 @@ struct PreferencesView: View {
 		ObservableUserDefault<Bool>(UserDefaults.Keys.autoTransition)
 	
 	@ObservedObject private var transition
-		= AutoTransitioner.shared.nextTransition
+		= TransitionScheduler.shared.nextTransition
 	
 	@State var hasScreenCapturePermission: Bool? = nil
 	

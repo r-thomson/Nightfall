@@ -16,23 +16,23 @@ class Transition: ObservableObject {
 	@Published var date: Date? = nil;
 }
 
-final class AutoTransitioner {
+final class TransitionScheduler {
 	
 	enum State {
 		case activated
 		case deactivated
 	}
 	
-	static let shared = AutoTransitioner()
+	static let shared = TransitionScheduler()
 	private static let OBSERVER_KEY = "autoTransitioner"
 	
 	var state: State = .deactivated {
 		didSet {
 			switch state {
 			case .activated:
-				LocationUtility.shared.registerObserver(key: AutoTransitioner.OBSERVER_KEY, observer: self)
+				LocationUtility.shared.registerObserver(key: TransitionScheduler.OBSERVER_KEY, observer: self)
 			case .deactivated:
-				LocationUtility.shared.unregisterObserver(key: AutoTransitioner.OBSERVER_KEY)
+				LocationUtility.shared.unregisterObserver(key: TransitionScheduler.OBSERVER_KEY)
 				os_log("canceling next transition", log: log)
 				self.transitionScheduler.invalidate()
 			}
@@ -45,7 +45,7 @@ final class AutoTransitioner {
 	private static let schedulerIdentifier = "\(Bundle.main.bundleIdentifier!).transitionCheck"
 	
 	init() {
-		transitionScheduler = NSBackgroundActivityScheduler(identifier: AutoTransitioner.schedulerIdentifier)
+		transitionScheduler = NSBackgroundActivityScheduler(identifier: TransitionScheduler.schedulerIdentifier)
 	}
 	
 	func activate() {
@@ -56,15 +56,15 @@ final class AutoTransitioner {
 		state = .deactivated
 	}
 	
-	private func determineNextTransition() {
+	private func determineNextTransition(location: CLLocation) {
 		
-		guard let (theme, date) = self.getNextTransition(date: Date() ) else { return }
+		guard let (theme, date) = self.getNextTransition(date: Date(), location: location ) else { return }
 		self.nextTransition.theme = theme
 		self.nextTransition.date = date
-		self.scheduleTransition(transition: self.nextTransition)
+		self.scheduleTransition(transition: self.nextTransition, location: location)
 	}
 	
-	private func getNextTransition(date: Date, loops: Int = 0) -> (AppearanceTheme, Date)? {
+	private func getNextTransition(date: Date, location: CLLocation, loops: Int = 0) -> (AppearanceTheme, Date)? {
 		
 		os_log("getting next transition (loop: %u)", log: log, Int32(loops))
 		
@@ -73,11 +73,7 @@ final class AutoTransitioner {
 		if loops > 2 { return nil }
 		
 		// make sure we have all this stuff
-		guard let loc = LocationUtility.shared.location else{
-			os_log("can't get next transition; has no location", log: log)
-			return nil
-		}
-		guard let solar = Solar(for: date, coordinate: loc.coordinate) else {
+		guard let solar = Solar(for: date, coordinate: location.coordinate) else {
 			os_log("can't get next transition; has no solar", log: log)
 			return nil
 		}
@@ -98,11 +94,11 @@ final class AutoTransitioner {
 			return (.dark, sunset)
 		} else {
 			let roughlyTomorrow = now + TimeInterval( 60 * 60 * 24 )
-			return getNextTransition(date: roughlyTomorrow, loops: loops + 1)
+			return getNextTransition(date: roughlyTomorrow, location: location, loops: loops + 1)
 		}
 	}
 	
-	private func scheduleTransition(transition: Transition ) {
+	private func scheduleTransition(transition: Transition, location: CLLocation) {
 		
 		guard let theme = transition.theme else { return }
 		guard let date = transition.date else { return }
@@ -128,27 +124,22 @@ final class AutoTransitioner {
 			completion(.finished)
 			
 			// schedule the next transition
-			self.determineNextTransition()
+			self.determineNextTransition(location: location)
 		}
 		
 		os_log("scheduled transition to %{public}@ at %{public}@", log: log, String(describing: theme), String(describing: date))
 	}
 }
 
-extension AutoTransitioner: LocationObserver {
-	func authorizationDidChange(authorization: LocationAuthorization) {
-		os_log("autotransitioner: authorization changed to %{public}@, determining next transition", log: log, String(describing: authorization))
+extension TransitionScheduler: LocationStateObserver {
+	func locationStateDidChange(state: LocationState) {
+		os_log("autotransitioner: location state changed to %{public}@, determining next transition", log: log, String(describing: state))
 		transitionScheduler.invalidate()
-		DispatchQueue.main.async {
-			self.determineNextTransition()
-		}
-	}
-	
-	func locationDidChange(location: CLLocation?) {
-		os_log("autotransitioner: location changed to %{public}@, determining next transition", log: log, String(describing: location))
-		transitionScheduler.invalidate()
-		DispatchQueue.main.async {
-			self.determineNextTransition()
+		
+		if state.authorization == .authorized, let location = state.location {
+			DispatchQueue.main.async {
+				self.determineNextTransition(location: location)
+			}
 		}
 	}
 }

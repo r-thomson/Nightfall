@@ -17,45 +17,56 @@ enum LocationAuthorization {
 	case needUserAction
 }
 
-protocol LocationObserver {
-	func authorizationDidChange(authorization: LocationAuthorization);
-	func locationDidChange(location: CLLocation?);
+struct LocationState {
+	let authorization: LocationAuthorization
+	let location: CLLocation?
+}
+protocol LocationStateObserver {
+	func locationStateDidChange(state: LocationState);
 }
 
 class LocationUtility: NSObject {
 	
 	static let shared = LocationUtility()
-	var location: CLLocation? = nil {
-		didSet(oldLocation) {
-			// if no change, don't alert
-			if oldLocation == location { return }
-			
-			// if distance change isn't big enough, don't change
-			if let new = location, let old = oldLocation, new.distance(from: old) < 25000 {
-				location = oldLocation
-				return
-			}
-			
-			// if meaningfully changed, alert
-			for (_, o) in observers {
-				o.locationDidChange(location: location)
-			}
-		}
-	}
-	let locationManager = CLLocationManager()
 	
-	private var observers = [String:LocationObserver]()
-	private var authorized: LocationAuthorization = .unset{
-		didSet {
-			for (_, o) in observers {
-				o.authorizationDidChange(authorization: authorized)
-			}
-		}
-	}
-	
+	private let locationManager = CLLocationManager()
 	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "location")
 	
+	private var observers = [String:LocationStateObserver]()
+	private var authorized: LocationAuthorization {
+		didSet(prevAuthorized) {
+			// if authorization changed, update state
+			if prevAuthorized != authorized {
+				state = LocationState(authorization: authorized, location: state.location)
+			}
+		}
+	}
+	private var location: CLLocation? {
+		didSet {
+			// if both are nil, exit
+			if location == nil, state.location == nil { return }
+			
+			// if both not nil and distance change is not big enough, exit
+			if let new = location, let prev = state.location, new.distance(from: prev) < 25000 { return }
+			
+			state = LocationState(authorization: self.state.authorization, location: location)
+		}
+	}
+	private var state: LocationState {
+		didSet(prevState) {
+			// when state changes, notify observers
+			for (_, o) in observers {
+				o.locationStateDidChange(state: LocationState(authorization: self.authorized, location: location))
+			}
+		}
+	}
+	
 	override init () {
+		
+		// init state
+		authorized = .unset
+		location = nil
+		state = LocationState(authorization: authorized, location: location)
 		
 		super.init()
 		
@@ -67,7 +78,7 @@ class LocationUtility: NSObject {
 		
 		// determine the initial authorization status
 		if #available(macOS 11.0, *) {
-			// this will get handled in locationManagerDidChangeAuthorization
+			// this will get handled in locationManagerDidChangeAuthorization for (>= macOS 11.0)
 		} else {
 			switch CLLocationManager.authorizationStatus() {
 			case .authorized, .authorizedAlways, .authorizedWhenInUse:
@@ -82,10 +93,9 @@ class LocationUtility: NSObject {
 		os_log("initialized location utility with %{public}@", log: log, String(describing: authorized))
 	}
 	
-	func registerObserver(key: String, observer: LocationObserver) {
+	func registerObserver(key: String, observer: LocationStateObserver) {
 		observers[key] = observer
-		observer.authorizationDidChange(authorization: self.authorized)
-		observer.locationDidChange(location: self.location)
+		observer.locationStateDidChange(state: self.state)
 	}
 	func unregisterObserver(key: String) {
 		observers.removeValue(forKey: key)
