@@ -18,46 +18,26 @@ class Transition: ObservableObject {
 
 final class TransitionScheduler {
 	
-	enum State {
-		case activated
-		case deactivated
-	}
-	
 	static let shared = TransitionScheduler()
-	private static let OBSERVER_KEY = "autoTransitioner"
 	
-	var state: State = .deactivated {
-		didSet {
-			switch state {
-			case .activated:
-				LocationUtility.shared.registerObserver(key: TransitionScheduler.OBSERVER_KEY, observer: self)
-			case .deactivated:
-				LocationUtility.shared.unregisterObserver(key: TransitionScheduler.OBSERVER_KEY)
-				os_log("canceling next transition", log: log)
-				self.transitionScheduler.invalidate()
-			}
-		}
-	}
 	var nextTransition: Transition = Transition()
 	
-	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "scheduler")
-	private let transitionScheduler: NSBackgroundActivityScheduler
-	private static let schedulerIdentifier = "\(Bundle.main.bundleIdentifier!).transitionCheck"
-	
-	init() {
-		transitionScheduler = NSBackgroundActivityScheduler(identifier: TransitionScheduler.schedulerIdentifier)
-	}
-	
 	func activate() {
-		state = .activated
+		LocationUtility.shared.registerObserver(key: TransitionScheduler.schedulerIdentifier, observer: self)
 	}
 	
 	func deactivate() {
-		state = .deactivated
+		LocationUtility.shared.unregisterObserver(key: TransitionScheduler.schedulerIdentifier)
+		os_log("canceling next transition", log: log)
+		self.transitionScheduler.invalidate()
 	}
 	
+	
+	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "scheduler")
+	private let transitionScheduler = NSBackgroundActivityScheduler(identifier: TransitionScheduler.schedulerIdentifier)
+	private static let schedulerIdentifier = "\(Bundle.main.bundleIdentifier!).transitionScheduler"
+	
 	private func determineNextTransition(location: CLLocation) {
-		
 		guard let (theme, date) = self.getNextTransition(date: Date(), location: location ) else { return }
 		self.nextTransition.theme = theme
 		self.nextTransition.date = date
@@ -106,15 +86,24 @@ final class TransitionScheduler {
 		let until = date.timeIntervalSinceNow;
 		guard until > 0 else { return } // don't schedule for the past
 		
-		print("until = \(until)")
-		print("now + until = \(Date() + until)")
+//		print("until = \(until)")
+		let execDate = Date() + until
+//		print("now + until = \(execDate)")
 		
 		transitionScheduler.repeats = false
 		transitionScheduler.interval = until
-		transitionScheduler.tolerance = TimeInterval( 60 * 3 ) // three minute tolerance
+		transitionScheduler.tolerance = 0 // fire exactly at that time
 		transitionScheduler.qualityOfService = .userInitiated
 		transitionScheduler.schedule() { completion in
-			os_log("running transition %{public}@ that was scheduled for TIME %{public}@: currently TIME %{public}@", log: self.log, String(describing: theme), String(describing: date), String(describing: Date()))
+			
+			// not time yet, wait
+			if execDate.timeIntervalSinceNow > 0 {
+				completion(.deferred)
+				os_log("tried to run transition \"%{public}@\" early, that was scheduled for TIME %{public}@", log: self.log, String(describing: theme), String(describing: execDate), String(describing: Date()))
+				return
+			}
+			
+			os_log("running transition %{public}@ that was scheduled for TIME %{public}@", log: self.log, String(describing: theme), String(describing: execDate), String(describing: Date()))
 			switch theme {
 			case .light:
 				Nightfall.setToLightMode()

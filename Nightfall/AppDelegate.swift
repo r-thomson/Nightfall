@@ -8,7 +8,7 @@ import os.log
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	let statusItemController = NightfallStatusItemController()
 	
-	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "scheduler")
+	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "app_delegate")
 	
 	// Used to return focus to the last application used
 	var lastActiveApp: NSRunningApplication?
