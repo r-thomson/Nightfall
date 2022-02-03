@@ -16,6 +16,13 @@ struct PreferencesView: View {
 		}
 	}
 	
+	/// Opens the Screen Recording privacy settings in System Preferences
+	private func openSystemLocationPrefs() {
+		if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices") {
+			NSWorkspace.shared.open(url)
+		}
+	}
+	
 	/// Opens the Keyboard pane in System Preferences
 	private func openSystemKeyboardPrefs() {
 		let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Keyboard.prefPane")
@@ -36,49 +43,79 @@ struct PreferencesView: View {
 	
 	@State var hasScreenCapturePermission: Bool? = nil
 	
+	func permissionButton(action: @escaping ()->(), description: String, showWarning: Bool) -> some View {
+		Button(action: action) {
+			HStack(spacing: 2.5) {
+				if showWarning {
+					if #available(macOS 11.0, *) {
+						Image(nsImage: NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: "Caution")!)
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.frame(height: 10)
+					} else {
+						Image(nsImage: NSImage(named: NSImage.cautionName)!)
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.frame(height: 10)
+					}
+				}
+				
+				Text(description)
+					.font(.system(size: 9))
+			}
+		}
+		.buttonStyle(BorderlessButtonStyle())
+		.cursor(.pointingHand)
+		.padding(.leading, 18)
+	}
+	
 	var body: some View {
 		VStack {
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 2) {
 					Toggle("Animated transition", isOn: $useTransition.value)
 					
-					Button(action: openSystemScreenCapturePrefs) {
-						HStack(spacing: 2.5) {
-							if (useTransition.value && hasScreenCapturePermission == false) {
-								Image(nsImage: NSImage(named: NSImage.cautionName)!)
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(height: 10)
-							}
-							
-							Text("Requires screen recording permission")
-								.font(.system(size: 9))
-						}
-					}
-					.buttonStyle(BorderlessButtonStyle())
-					.cursor(.pointingHand)
-					.padding(.leading, 18)
+					permissionButton(
+						action: openSystemScreenCapturePrefs,
+						description: "Requires screen recording permissions",
+						showWarning: (useTransition.value && hasScreenCapturePermission == false))
 				}
 				
 				Toggle("Start Nightfall at login", isOn: $startAtLogin.value)
 				
 				Toggle("Check for new versions", isOn: $checkForUpdates.value)
 				
-				Toggle("Auto Sunrise/Sunset", isOn: $autoTransition.value)
-				HStack {
+				VStack(alignment: .leading, spacing: 2) {
+					Toggle("Auto Sunrise/Sunset", isOn: $autoTransition.value)
+					
+					// if checked
 					if autoTransition.value {
+						
+						// has valid transition
 						if let theme = transition.theme, let date = transition.date {
-							HStack{
-								Text("Next transition: \(theme.toString()) at \(self.dateFormatter.string(from:date))")
-							}
+							Text("Next transition: \(theme.toString()) at \(self.dateFormatter.string(from:date))")
+								.font(.system(size: 9))
+								.padding(.leading, 18)
+								.foregroundColor(.secondary)
+						
+						// has no transition because location not authorized
+						} else if LocationUtility.shared.isAuthorized() != .authorized {
+							permissionButton(
+								action: openSystemLocationPrefs,
+								description: "Requires location permissions",
+								showWarning: true)
 						}
-					} else if LocationUtility.shared.isAuthorized() != .authorized {
-						Text("Requires location services permission")
+						
+					// if not checked
+					} else {
+						if LocationUtility.shared.isAuthorized() != .authorized {
+							permissionButton(
+								action: openSystemLocationPrefs,
+								description: "Requires location permissions",
+								showWarning: false)
+						}
 					}
 				}
-				.font(.system(size: 9))
-				.padding(.leading, 18)
-				.foregroundColor(.secondary)
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
 			
