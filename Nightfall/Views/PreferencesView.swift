@@ -99,7 +99,7 @@ struct PreferencesView: View {
 								.foregroundColor(.secondary)
 						
 						// has no transition because location not authorized
-						} else if LocationUtility.shared.isAuthorized() != .authorized {
+						} else if LocationUtility.shared.getAuthorizationStatus() != .authorized {
 							permissionButton(
 								action: openSystemLocationPrefs,
 								description: "Requires location permissions",
@@ -108,7 +108,7 @@ struct PreferencesView: View {
 						
 					// if not checked
 					} else {
-						if LocationUtility.shared.isAuthorized() != .authorized {
+						if LocationUtility.shared.getAuthorizationStatus() != .authorized {
 							permissionButton(
 								action: openSystemLocationPrefs,
 								description: "Requires location permissions",

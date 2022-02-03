@@ -29,15 +29,16 @@ class LocationUtility: NSObject {
 	
 	static let shared = LocationUtility()
 	
-	private let locationManager = CLLocationManager()
+	private var locationManagerInitialized = false
+	private var locationManager: CLLocationManager = CLLocationManager()
 	private let log: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "location")
 	
 	private var observers = [String:LocationStateObserver]()
-	private var authorized: LocationAuthorization {
+	private var authorizationStatus: LocationAuthorization {
 		didSet(prevAuthorized) {
 			// if authorization changed, update state
-			if prevAuthorized != authorized {
-				state = LocationState(authorization: authorized, location: state.location)
+			if prevAuthorized != authorizationStatus {
+				state = LocationState(authorization: authorizationStatus, location: state.location)
 			}
 		}
 	}
@@ -56,42 +57,11 @@ class LocationUtility: NSObject {
 		didSet(prevState) {
 			// when state changes, notify observers
 			for (_, o) in observers {
-				o.locationStateDidChange(state: LocationState(authorization: self.authorized, location: location))
+				o.locationStateDidChange(state: LocationState(authorization: self.authorizationStatus, location: location))
 			}
 		}
 	}
 	
-	override init () {
-		
-		// init state
-		authorized = .unset
-		location = nil
-		state = LocationState(authorization: authorized, location: location)
-		
-		super.init()
-		
-		if CLLocationManager.locationServicesEnabled() {
-			locationManager.delegate = self
-			locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-			locationManager.startUpdatingLocation()
-		}
-		
-		// determine the initial authorization status
-		if #available(macOS 11.0, *) {
-			// this will get handled in locationManagerDidChangeAuthorization for (>= macOS 11.0)
-		} else {
-			switch CLLocationManager.authorizationStatus() {
-			case .authorized, .authorizedAlways, .authorizedWhenInUse:
-				authorized = .authorized
-			case .notDetermined:
-				authorized = .unset
-			default:
-				authorized = .needUserAction
-			}
-		}
-		
-		os_log("initialized location utility with %{public}@", log: log, String(describing: authorized))
-	}
 	
 	func registerObserver(key: String, observer: LocationStateObserver) {
 		observers[key] = observer
@@ -100,17 +70,57 @@ class LocationUtility: NSObject {
 	func unregisterObserver(key: String) {
 		observers.removeValue(forKey: key)
 	}
-	
-	func isAuthorized() -> LocationAuthorization {
-		return authorized
+	func getAuthorizationStatus() -> LocationAuthorization {
+		return authorizationStatus
 	}
-	
 	func requestAuthorization() {
-		os_log("location authorization requested: current = %{public}@", log: log, String(describing: authorized))
-		if authorized == .unset {
+		os_log("location authorization requested: current = %{public}@", log: log, String(describing: authorizationStatus))
+		if authorizationStatus == .unset {
 			self.locationManager.requestWhenInUseAuthorization()
 		}
+		initLocationManager()
 	}
+	
+	
+	override init () {
+		
+		// init state
+		authorizationStatus = .unset
+		location = nil
+		state = LocationState(authorization: authorizationStatus, location: location)
+		
+		super.init()
+		
+		// determine the initial authorization status
+		if #available(macOS 11.0, *) {
+			// this will get handled in locationManagerDidChangeAuthorization for (>= macOS 11.0)
+		} else {
+			switch CLLocationManager.authorizationStatus() {
+			case .authorized, .authorizedAlways, .authorizedWhenInUse:
+				authorizationStatus = .authorized
+			case .notDetermined:
+				authorizationStatus = .unset
+			default:
+				authorizationStatus = .needUserAction
+			}
+		}
+		
+		os_log("initialized location utility with %{public}@", log: log, String(describing: authorizationStatus))
+	}
+	
+	private func initLocationManager() {
+		guard locationManagerInitialized == false else { return }
+		guard CLLocationManager.locationServicesEnabled() else {
+			// the device itself doesn't have location services enabled
+			return
+		}
+		
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+		locationManager.startUpdatingLocation()
+		locationManagerInitialized = true
+	}
+	
 }
 
 extension LocationUtility : CLLocationManagerDelegate {
@@ -118,15 +128,15 @@ extension LocationUtility : CLLocationManagerDelegate {
 		if #available(macOS 11.0, *) {
 			switch manager.authorizationStatus {
 			case .authorized, .authorizedAlways, .authorizedWhenInUse:
-				authorized = .authorized
+				authorizationStatus = .authorized
 			case .notDetermined:
-				authorized = .unset
+				authorizationStatus = .unset
 			default:
-				authorized = .needUserAction
+				authorizationStatus = .needUserAction
 			}
 		}
 		
-		os_log("location utility updated authorization status to %{public}@", log: log, String(describing: authorized))
+		os_log("location utility updated authorization status to %{public}@", log: log, String(describing: authorizationStatus))
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
