@@ -16,9 +16,9 @@ enum AppearanceTheme {
 	func toString() -> String {
 		switch self {
 		case .light:
-			return "Light"
+			return "Light Mode"
 		case .dark:
-			return "Dark"
+			return "Dark Mode"
 		}
 	}
 }

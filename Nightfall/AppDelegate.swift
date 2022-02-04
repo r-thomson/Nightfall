@@ -72,6 +72,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		lastActiveApp = nil
 	}
 	
+	func applicationWillTerminate(_ notification: Notification) {
+		TransitionScheduler.shared.terminate()
+		AppUpdateChecker.shared.terminate()
+	}
+	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?,
 							   change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 		
@@ -86,11 +91,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			
 			// watch auto transition
 			if keyPath == UserDefaults.Keys.autoTransition {
-				os_log("detected change on autoTransition")
+				os_log("detected change on autoTransition", log: log)
 				if let new = change?[.newKey] as? Bool {
 					os_log("autoTransition set to %{public}@", log: log, new ? "true" : "false")
 					if new {
-						os_log("asked for permission from pref change")
+						os_log("asked for permission from pref change", log: log)
 						LocationUtility.shared.requestAuthorization()
 						TransitionScheduler.shared.activate()
 					} else {

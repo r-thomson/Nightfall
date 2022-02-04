@@ -83,29 +83,11 @@ class LocationUtility: NSObject {
 	
 	
 	override init () {
-		
-		// init state
 		authorizationStatus = .unset
 		location = nil
 		state = LocationState(authorization: authorizationStatus, location: location)
 		
 		super.init()
-		
-		// determine the initial authorization status
-		if #available(macOS 11.0, *) {
-			// this will get handled in locationManagerDidChangeAuthorization for (>= macOS 11.0)
-		} else {
-			switch CLLocationManager.authorizationStatus() {
-			case .authorized, .authorizedAlways, .authorizedWhenInUse:
-				authorizationStatus = .authorized
-			case .notDetermined:
-				authorizationStatus = .unset
-			default:
-				authorizationStatus = .needUserAction
-			}
-		}
-		
-		os_log("initialized location utility with %{public}@", log: log, String(describing: authorizationStatus))
 	}
 	
 	private func initLocationManager() {
@@ -119,6 +101,23 @@ class LocationUtility: NSObject {
 		locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
 		locationManager.startUpdatingLocation()
 		locationManagerInitialized = true
+		
+		let authStatus: CLAuthorizationStatus
+		if #available(macOS 11.0, *) {
+			authStatus = locationManager.authorizationStatus
+		} else {
+			authStatus = CLLocationManager.authorizationStatus()
+		}
+		switch authStatus {
+		case .authorized, .authorizedAlways, .authorizedWhenInUse:
+			authorizationStatus = .authorized
+		case .notDetermined:
+			authorizationStatus = .unset
+		default:
+			authorizationStatus = .needUserAction
+		}
+		
+		os_log("initialized location manager with auth status: %{public}@", log: log, String(describing: authorizationStatus))
 	}
 	
 }
@@ -136,7 +135,7 @@ extension LocationUtility : CLLocationManagerDelegate {
 			}
 		}
 		
-		os_log("location utility updated authorization status to %{public}@", log: log, String(describing: authorizationStatus))
+		os_log("location utility received authorization status of %{public}@", log: log, String(describing: authorizationStatus))
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

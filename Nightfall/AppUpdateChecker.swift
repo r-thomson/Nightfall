@@ -24,6 +24,10 @@ final class AppUpdateChecker {
 		updateScheduler.interval = TimeInterval(AppUpdateChecker.schedulerIntervalSecs)
 	}
 	
+	func terminate() {
+		updateScheduler.invalidate()
+	}
+	
 	/// Checks if there is an update available by retrieving the latest release version from Nightfall's
 	/// GitHub repository. Updates `remoteVersion` and `isOutdated`.
 	func checkForUpdate() {
