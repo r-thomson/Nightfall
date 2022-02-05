@@ -69,18 +69,27 @@ final class TransitionScheduler {
 	/// Figures out the next transition that will happen at the given location
 	private func updateScheduler(location: CLLocation) {
 		
-		switch calculateNextTransition(location: location) {
-		
+		DispatchQueue.global(qos: .utility).async {
+			
+			switch self.calculateNextTransition(location: location) {
+			
 			case let .valid(theme, date):
-				nextTransition.theme = theme
-				nextTransition.date = date
-				scheduleTransition(transition: (theme, date), location: location)
+				DispatchQueue.main.sync {
+					// must update this published data on main thread
+					self.nextTransition.theme = theme
+					self.nextTransition.date = date
+				}
+				self.scheduleTransition(transition: (theme, date), location: location)
 				
 			case .invalid, // there is no valid transition for 6 months
 				 .error:   // there was an error during calculation
-				nextTransition.theme = nil
-				nextTransition.date = nil
-				scheduleRefreshTomorrow(location: location)
+				DispatchQueue.main.sync {
+					// must update this published data on main thread
+					self.nextTransition.theme = nil
+					self.nextTransition.date = nil
+				}
+				self.scheduleRefreshTomorrow(location: location)
+			}
 		}
 	}
 	
@@ -132,11 +141,17 @@ final class TransitionScheduler {
 		scheduledBackgroundTask!.interval = oneDay
 		scheduledBackgroundTask!.tolerance = oneHour
 		scheduledBackgroundTask!.schedule() { completion in
+			
 			if let shouldDefer = self.scheduledBackgroundTask?.shouldDefer, shouldDefer {
 				completion(.deferred)
 			} else {
+				// update the scheduler in 500ms
+				let dispatchTime = DispatchTime.now() + DispatchTimeInterval.milliseconds(500)
+				DispatchQueue.global(qos: .utility).asyncAfter(deadline: dispatchTime) {
+					self.updateScheduler(location: location)
+				}
+				
 				completion(.finished)
-				self.updateScheduler(location: location)
 			}
 		}
 	}
@@ -156,8 +171,8 @@ final class TransitionScheduler {
 		scheduledBackgroundTask = NSBackgroundActivityScheduler(identifier: TransitionScheduler.schedulerIdentifier)
 		scheduledBackgroundTask!.repeats = false
 		scheduledBackgroundTask!.qualityOfService = .userInitiated
-		scheduledBackgroundTask!.interval = secondsUntil
-		scheduledBackgroundTask!.tolerance = tolerance // one second tolerance
+		scheduledBackgroundTask!.interval = secondsUntil + (tolerance / 2)
+		scheduledBackgroundTask!.tolerance = tolerance
 		scheduledBackgroundTask!.schedule() { completion in
 			
 			if date.timeIntervalSinceNow > 0 { // not time yet, wait (why is this happening)
@@ -173,9 +188,14 @@ final class TransitionScheduler {
 						Nightfall.setToDarkMode()
 				}
 				os_log("ran %{public}@ transition scheduled for %{public}@", log: self.log, themeStr, execDateStr)
-				completion(.finished)
 				
-				self.updateScheduler(location: location)
+				// update the scheduler in 500ms
+				let dispatchTime = DispatchTime.now() + DispatchTimeInterval.milliseconds(500)
+				DispatchQueue.global(qos: .utility).asyncAfter(deadline: dispatchTime) {
+					self.updateScheduler(location: location)
+				}
+				
+				completion(.finished)
 			}
 		}
 		
@@ -188,9 +208,7 @@ extension TransitionScheduler: LocationStateObserver {
 		os_log("TransitionScheduler: location state changed to %{public}@, determining next transition", log: log, String(describing: state))
 		scheduledBackgroundTask?.invalidate()
 		if let location = state.location {
-			DispatchQueue.main.async {
-				self.updateScheduler(location: location)
-			}
+			self.updateScheduler(location: location)
 		}
 	}
 }
