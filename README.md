@@ -16,7 +16,7 @@ Nightfall can be downloaded directly from [**the releases page**](https://github
 
 ### Homebrew
 
-Nightfall is available on [Homebrew Cask](https://github.com/Homebrew/homebrew-cask).
+Nightfall is available on [Homebrew Cask](https://formulae.brew.sh/cask/nightfall).
 
 ```sh
 brew install --cask nightfall
