@@ -36,7 +36,7 @@ If “Animated transition“ is enabled in preferences, Nightfall will smooth ov
 
 ### Hiding Nightfall
 
-If you’d like to hide Nightfall from your menu bar without quitting the app, you can do so by holding the Command key and dragging the icon out of the menu bar. To reveal Nightfall’s again, re-open the app while it’s still running.
+If you’d like to hide Nightfall from your menu bar without quitting the app, you can do so by holding the Command key and dragging the icon out of the menu bar. To reveal Nightfall again, re-open the app while it’s still running.
 
 ### Updating Nightfall
 
