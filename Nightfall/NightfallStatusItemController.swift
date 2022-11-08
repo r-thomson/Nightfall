@@ -32,7 +32,7 @@ final class NightfallStatusItemController {
 		contextMenu.items = [
 			NSMenuItem(title: "Toggle Dark Mode", action: #selector(handleToggleDarkMode(_:)), target: self),
 			NSMenuItem.separator(),
-			NSMenuItem(title: "Preferences…", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
+			NSMenuItem(title: "Settings…", action: #selector(handleOpenPreferences(_:)), target: self, keyEquivalent: ","),
 			NSMenuItem.separator(),
 			NSMenuItem(title: "Update…", action: #selector(handleOpenUpdateWindow(_:)), target: self),
 			NSMenuItem(title: "About Nightfall", action: #selector(handleOpenAboutWindow(_:)), target: self),
@@ -106,7 +106,7 @@ final class NightfallStatusItemController {
 		NSApp.activate(ignoringOtherApps: true)
 	}
 	
-	/// Handler function called when the "Preferences..." menu item is clicked.
+	/// Handler function called when the "Settings..." menu item is clicked.
 	@objc func handleOpenPreferences(_ sender: NSMenuItem) {
 		guard let button = statusButton else { return }
 		
