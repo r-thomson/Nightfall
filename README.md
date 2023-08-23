@@ -8,7 +8,8 @@ https://user-images.githubusercontent.com/29545379/150662417-90e6a4f8-7ad9-436a-
 
 _Nightfall requires macOS Catalina or later_
 
-**Note:** These builds are not signed with a developer ID; you will need to bypass Gatekeeper to run Nightfall. See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) for instructions.
+> **Note**
+> These builds are not signed with a developer ID; you will need to bypass Gatekeeper to run Nightfall. See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) for instructions.
 
 ### Direct Download
 
