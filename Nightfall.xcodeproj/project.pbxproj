@@ -19,6 +19,7 @@
 		AF7A0686279E48290031EC45 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7A0685279E48290031EC45 /* View.swift */; };
 		AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */; };
 		AF8EED5E2A9A7A0C00B65FEB /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = AF8EED5D2A9A7A0C00B65FEB /* KeyboardShortcuts */; };
+		AF8EED622A9A7AF600B65FEB /* KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8EED612A9A7AF600B65FEB /* KeyboardShortcuts.swift */; };
 		AF939CD723B1472700053801 /* About.txt in Resources */ = {isa = PBXBuildFile; fileRef = AF939CD623B1472700053801 /* About.txt */; };
 		AF939CD923B3FA2E00053801 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CD823B3FA2E00053801 /* AboutWindowController.swift */; };
 		AF939CDF23B441FD00053801 /* ObservableUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */; };
@@ -72,6 +73,7 @@
 		AF7A00B123EE5F890062D841 /* SemanticVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticVersion.swift; sourceTree = "<group>"; };
 		AF7A0685279E48290031EC45 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		AF818F2A23C2420B00E95C59 /* ToggleDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleDarkMode.swift; sourceTree = "<group>"; };
+		AF8EED612A9A7AF600B65FEB /* KeyboardShortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardShortcuts.swift; sourceTree = "<group>"; };
 		AF939CD623B1472700053801 /* About.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = About.txt; sourceTree = "<group>"; };
 		AF939CD823B3FA2E00053801 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		AF939CDE23B441FD00053801 /* ObservableUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableUserDefault.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		AF2582E4238339680088E4B2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AF8EED612A9A7AF600B65FEB /* KeyboardShortcuts.swift */,
 				AFCF6CBC23B920AB00C5CA70 /* NSMenuItem.swift */,
 				AF0046BA23C026CB001A2C61 /* UserDefaults.swift */,
 				AF7A0685279E48290031EC45 /* View.swift */,
@@ -376,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8EED622A9A7AF600B65FEB /* KeyboardShortcuts.swift in Sources */,
 				AFA1FCA6237A026800BBBFE3 /* NightfallStatusItemController.swift in Sources */,
 				AF818F2B23C2420B00E95C59 /* ToggleDarkMode.swift in Sources */,
 				AF7A0686279E48290031EC45 /* View.swift in Sources */,

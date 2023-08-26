@@ -1,5 +1,6 @@
 import Cocoa
 import Combine
+import KeyboardShortcuts
 import ServiceManagement
 
 @NSApplicationMain
@@ -22,6 +23,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 		// Register the services provider
 		NSApp.servicesProvider = ServicesProvider()
+
+		// Register global keyboard shortcut listener
+		KeyboardShortcuts.onKeyDown(for: .toggleDarkMode) {
+			toggleDarkMode()
+		}
 
 		// Begin checking for updates periodically
 		AppUpdateChecker.shared.startBackgroundChecking()

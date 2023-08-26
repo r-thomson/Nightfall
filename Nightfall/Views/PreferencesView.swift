@@ -1,12 +1,12 @@
+import KeyboardShortcuts
 import SwiftUI
 
 struct PreferencesView: View {
 	/// Opens the Screen Recording privacy settings in System Settings
 	private func openSystemScreenCapturePrefs() {
 		if let url = URL(
-			string:
-				"x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"
-		) {
+			string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture")
+		{
 			NSWorkspace.shared.open(url)
 		}
 	}
@@ -28,25 +28,24 @@ struct PreferencesView: View {
 
 	var body: some View {
 		VStack {
+			HStack(alignment: .firstTextBaseline) {
+				Text("Shortcut:")
+				Spacer()
+				KeyboardShortcuts.Recorder(for: .toggleDarkMode)
+			}
+			.padding(.bottom, 8)
+
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 2) {
 					Toggle("Animated transition", isOn: $useTransition.value)
 
 					Button(action: openSystemScreenCapturePrefs) {
 						HStack(spacing: 2.5) {
-							if useTransition.value
-								&& hasScreenCapturePermission
-									== false
-							{
-								Image(
-									nsImage: NSImage(
-										named: NSImage
-											.cautionName
-									)!
-								)
-								.resizable()
-								.aspectRatio(contentMode: .fit)
-								.frame(height: 10)
+							if useTransition.value && hasScreenCapturePermission == false {
+								Image(nsImage: NSImage(named: NSImage.cautionName)!)
+									.resizable()
+									.aspectRatio(contentMode: .fit)
+									.frame(height: 10)
 							}
 
 							Text("Requires screen recording permission")
@@ -80,7 +79,7 @@ struct PreferencesView: View {
 			}
 		}
 		.padding()
-		.frame(width: 230)
+		.frame(width: 240)
 		.onAppear {
 			// Check every time the preferences popup is opened
 			hasScreenCapturePermission = PermissionUtil.checkScreenCapturePermission(
