@@ -1,5 +1,6 @@
 import Cocoa
 import Combine
+import KeyboardShortcuts
 
 /// Wrapper class around Nightfall's `NSStatusItem` instance.
 final class NightfallStatusItemController {
@@ -32,21 +33,33 @@ final class NightfallStatusItemController {
 		contextMenu.items = [
 			NSMenuItem(
 				title: "Toggle Dark Mode",
-				action: #selector(handleToggleDarkMode(_:)), target: self),
+				action: #selector(handleToggleDarkMode(_:)),
+				target: self,
+				shortcut: .toggleDarkMode
+			),
 			NSMenuItem.separator(),
 			NSMenuItem(
-				title: "Settings…", action: #selector(handleOpenPreferences(_:)),
-				target: self, keyEquivalent: ","),
+				title: "Settings…",
+				action: #selector(handleOpenPreferences(_:)),
+				target: self,
+				keyEquivalent: ","
+			),
 			NSMenuItem.separator(),
 			NSMenuItem(
-				title: "Update…", action: #selector(handleOpenUpdateWindow(_:)),
-				target: self),
+				title: "Update…",
+				action: #selector(handleOpenUpdateWindow(_:)),
+				target: self
+			),
 			NSMenuItem(
 				title: "About Nightfall",
-				action: #selector(handleOpenAboutWindow(_:)), target: self),
+				action: #selector(handleOpenAboutWindow(_:)),
+				target: self
+			),
 			NSMenuItem(
-				title: "Quit Nightfall", action: #selector(NSApp.terminate(_:)),
-				keyEquivalent: "q"),
+				title: "Quit Nightfall",
+				action: #selector(NSApp.terminate(_:)),
+				keyEquivalent: "q"
+			),
 		]
 
 		// Configure the status item button
@@ -66,8 +79,7 @@ final class NightfallStatusItemController {
 		defer { statusItem.menu = nil }
 
 		let showUpdate =
-			UserDefaults.standard.checkForUpdates
-			&& (AppUpdateChecker.shared.isOutdated ?? false)
+			UserDefaults.standard.checkForUpdates && (AppUpdateChecker.shared.isOutdated ?? false)
 		contextMenu.item(withTitle: "Update…")?.isHidden = !showUpdate
 
 		statusButton?.performClick(sender)
@@ -85,7 +97,7 @@ final class NightfallStatusItemController {
 	// MARK: Handler functions
 
 	/// Handler function called when the status bar button is clicked. Determines if the click was a
-	/// left click or a right click (including control-click), and takes the apropriate action.
+	/// left click or a right click (including control-click), and takes the appropriate action.
 	@objc private func handleStatusButtonPress(_ sender: NSStatusBarButton) {
 		guard let event = NSApp.currentEvent else { return }
 
@@ -130,8 +142,7 @@ final class NightfallStatusItemController {
 
 	/// Handler function called when the "Update…" menu item is clicked.
 	@objc func handleOpenUpdateWindow(_ sender: NSMenuItem) {
-		let url = URL(
-			string: "https://github.com/\(GithubAPI.repoFullName)/releases/latest")!
+		let url = URL(string: "https://github.com/\(GithubAPI.repoFullName)/releases/latest")!
 		NSWorkspace.shared.open(url)
 	}
 }
