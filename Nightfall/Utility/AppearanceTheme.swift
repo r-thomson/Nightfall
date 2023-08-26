@@ -10,12 +10,12 @@ func setAppearanceTheme(to theme: AppearanceTheme, notify: Bool = false) {
 }
 
 enum AppearanceTheme {
-	case light // false
-	case dark // true
+	case light  // false
+	case dark  // true
 }
 
 extension AppearanceTheme {
-	static prefix func !(appearanceTheme: AppearanceTheme) -> AppearanceTheme {
+	static prefix func ! (appearanceTheme: AppearanceTheme) -> AppearanceTheme {
 		return appearanceTheme == .light ? .dark : .light
 	}
 }

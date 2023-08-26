@@ -3,11 +3,11 @@ import SwiftUI
 
 final class AboutWindowController: NSWindowController {
 	static let shared = AboutWindowController()
-	
+
 	init() {
 		let hostingVC = NSHostingController(rootView: AboutView())
 		super.init(window: NSWindow(contentViewController: hostingVC))
-		
+
 		if let window = self.window {
 			window.animationBehavior = .alertPanel
 			window.collectionBehavior = [.canJoinAllSpaces]
@@ -17,7 +17,7 @@ final class AboutWindowController: NSWindowController {
 			window.titleVisibility = .hidden
 		}
 	}
-	
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

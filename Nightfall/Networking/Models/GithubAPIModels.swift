@@ -8,7 +8,7 @@ extension GithubAPI {
 		let version: String
 		let url: URL
 		let isPrerelease: Bool
-		
+
 		enum CodingKeys: String, CodingKey {
 			case name
 			case version = "tag_name"

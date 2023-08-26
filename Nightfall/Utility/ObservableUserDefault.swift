@@ -8,7 +8,7 @@ import Foundation
 final class ObservableUserDefault<T>: NSObject, ObservableObject {
 	let defaults: UserDefaults
 	let key: String
-	
+
 	/// The current value in the user's defaults database for this instance's `key`.
 	///
 	/// - Warning:
@@ -22,26 +22,28 @@ final class ObservableUserDefault<T>: NSObject, ObservableObject {
 			defaults.set(newValue, forKey: key)
 		}
 	}
-	
+
 	/// - Parameter key: A key in the user's defaults database. This key should have a non-nil value of type `T`.
 	/// - Parameter defaults: The `UserDefaults` instance to use. Defaults to `UserDefaults.standard`.
 	init(_ key: String, defaults: UserDefaults = UserDefaults.standard) {
 		self.defaults = defaults
 		self.key = key
 		super.init()
-		
+
 		// Register for notifications for changes to this value
 		defaults.addObserver(self, forKeyPath: key, options: [], context: nil)
 	}
-	
+
 	// Respond to changes of the UserDefault's value to update any subscribers
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?,
-							   change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+	override func observeValue(
+		forKeyPath keyPath: String?, of object: Any?,
+		change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?
+	) {
 		if object as? UserDefaults === defaults && keyPath == key {
 			self.objectWillChange.send()
 		}
 	}
-	
+
 	deinit {
 		// Remove the observer added in init
 		// This prevents a crash when this object is deallocated
