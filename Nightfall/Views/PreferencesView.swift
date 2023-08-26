@@ -11,12 +11,6 @@ struct PreferencesView: View {
 		}
 	}
 
-	/// Opens the Keyboard pane in System Settings
-	private func openSystemKeyboardPrefs() {
-		let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Keyboard.prefPane")
-		NSWorkspace.shared.open(url)
-	}
-
 	@ObservedObject private var useTransition =
 		ObservableUserDefault<Bool>(UserDefaults.Keys.useTransition)
 	@ObservedObject private var startAtLogin =
@@ -62,28 +56,13 @@ struct PreferencesView: View {
 				Toggle("Check for new versions", isOn: $checkForUpdates.value)
 			}
 			.frame(maxWidth: .infinity, alignment: .leading)
-
-			Divider()
-				.padding(.vertical, 8)
-
-			VStack(alignment: .leading) {
-				Text(
-					"Nightfall exposes a \"Toggle Dark Mode\" service that can have a global keyboard shortcut assigned in System Settings."
-				)
-				.font(.system(size: 12))
-				.allowsTightening(true)
-				.fixedSize(horizontal: false, vertical: true)
-
-				Button("Open System Settings", action: openSystemKeyboardPrefs)
-					.frame(maxWidth: .infinity, alignment: .center)
-			}
 		}
 		.padding()
 		.frame(width: 240)
 		.onAppear {
 			// Check every time the preferences popup is opened
-			hasScreenCapturePermission = PermissionUtil.checkScreenCapturePermission(
-				canPrompt: false)
+			hasScreenCapturePermission =
+				PermissionUtil.checkScreenCapturePermission(canPrompt: false)
 		}
 	}
 }
