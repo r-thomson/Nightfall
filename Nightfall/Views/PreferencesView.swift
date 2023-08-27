@@ -20,6 +20,8 @@ struct PreferencesView: View {
 
 	@State var hasScreenCapturePermission: Bool? = nil
 
+	let cautionImage = NSImage(named: NSImage.cautionName)!
+
 	var body: some View {
 		VStack {
 			HStack(alignment: .firstTextBaseline) {
@@ -31,20 +33,20 @@ struct PreferencesView: View {
 
 			VStack(alignment: .leading) {
 				VStack(alignment: .leading, spacing: 2) {
-					Toggle("Animated transition", isOn: $useTransition.value)
+					HStack(spacing: 4) {
+						Toggle("Animated transition", isOn: $useTransition.value)
+
+						if useTransition.value && hasScreenCapturePermission == false {
+							Image(nsImage: cautionImage)
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.frame(height: 14)
+						}
+					}
 
 					Button(action: openSystemScreenCapturePrefs) {
-						HStack(spacing: 2.5) {
-							if useTransition.value && hasScreenCapturePermission == false {
-								Image(nsImage: NSImage(named: NSImage.cautionName)!)
-									.resizable()
-									.aspectRatio(contentMode: .fit)
-									.frame(height: 10)
-							}
-
-							Text("Requires screen recording permission")
-								.font(.system(size: 9))
-						}
+						Text("Requires screen recording permission")
+							.font(.system(size: 9))
 					}
 					.buttonStyle(BorderlessButtonStyle())
 					.cursor(.pointingHand)
