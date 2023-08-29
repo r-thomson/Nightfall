@@ -8,16 +8,13 @@ https://user-images.githubusercontent.com/29545379/150662417-90e6a4f8-7ad9-436a-
 
 _Nightfall requires macOS Catalina or later_
 
-> **Note**
-> These builds are not signed with a developer ID; you will need to bypass Gatekeeper to run Nightfall. See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) for instructions.
-
 ### Direct Download
 
 Nightfall can be downloaded directly from [**the releases page**](https://github.com/r-thomson/Nightfall/releases).
 
 ### Homebrew
 
-Nightfall is available on [Homebrew Cask](https://formulae.brew.sh/cask/nightfall).
+Nightfall is available for download on [Homebrew Cask](https://formulae.brew.sh/cask/nightfall).
 
 ```sh
 brew install --cask nightfall
@@ -29,7 +26,7 @@ brew install --cask nightfall
 
 ### Setting a Keyboard Shortcut
 
-You can toggle dark mode with a global keyboard shortcut through a [service](https://support.apple.com/en-my/guide/mac-help/mchlp1012/mac). This shortcut can be configured in System Preferences: in Keyboard preferences, look for “Toggle Dark Mode” under Shortcuts → Services → General.
+Nightfall allows you to toggle dark mode from anywhere with a configurable keyboard shortcut. By default, this will be set to <kbd>^⌥⌘T</kbd>. You can change this in Nightfall's settings.
 
 ### Using Animated Transitions
 
