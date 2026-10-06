@@ -8,6 +8,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	let statusItemController = NightfallStatusItemController()
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
+		// Because Nightfall has no windows, AppKit considers it eligible for automatic
+		// termination, which lets macOS silently kill it (e.g. when purging app caches).
+		// As a menu bar app that listens for a global shortcut, it must stay running.
+		ProcessInfo.processInfo.disableAutomaticTermination(
+			"Nightfall must keep running to provide its menu bar item and keyboard shortcut")
+
 		// Register user defaults
 		UserDefaults.standard.register(defaults: [
 			UserDefaults.Keys.useTransition: true,
